@@ -6,3 +6,6 @@ HaceneM = Hacène Menguelti
 Chrabou = Bouchra Bnik
 amrx21 = Amandine Roux
 Avicenne-b = Bilal Ghazouani 
+
+Pour ce faire tourner la base de données il faut télécharger MySQL.
+Le code étant écrit en JAVA .
