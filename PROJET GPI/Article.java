@@ -38,12 +38,16 @@ public class Article {
         this.prix = newPrix;
     }
 
-    public void addQuantite(int quantiteAjoute) {
-        this.quantite += quantiteAjoute;
+    public void setQuantite(int newQuantite) {
+        this.quantite = newQuantite;
     }
 
-    public void delQuantite(int quantiteSoustraire) {
-        this.quantite += quantiteSoustraire;
-    }
+    // public void addQuantite(int quantiteAjoute) {
+    // this.quantite += quantiteAjoute;
+    // }
+
+    // public void delQuantite(int quantiteSoustraire) {
+    // this.quantite += quantiteSoustraire;
+    // }
 
 }

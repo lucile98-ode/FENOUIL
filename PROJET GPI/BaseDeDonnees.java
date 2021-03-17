@@ -6,7 +6,7 @@ public class BaseDeDonnees {
 
     private CibleRoutage[] listeCibleRoutage = new CibleRoutage[0];
     private CibleRoutage[] listeValide = new CibleRoutage[0];
-    private CibleRoutage[] listeAEnvoyer = new CibleRoutage[0];
+    private CibleRoutage[] listeEnvoye = new CibleRoutage[0];
 
     private Individu[] listeIndividu = new Individu[0];
     private Article[] listeArticle = new Article[0];
@@ -25,7 +25,7 @@ public class BaseDeDonnees {
     }
 
     public CibleRoutage[] getListeCibleRoutagesEnvoyee() {
-        return listeAEnvoyer;
+        return listeEnvoye;
     }
 
     public Individu[] getListeIndividus() {
@@ -38,7 +38,7 @@ public class BaseDeDonnees {
 
     // POUR UN DEBUG
     public CibleRoutage getCibleRoutageEnvoye(int index) {
-        return listeAEnvoyer[index];
+        return listeEnvoye[index];
     }
     //
 
@@ -71,12 +71,12 @@ public class BaseDeDonnees {
 
     public int addCibleRoutagesAEnvoyer(CibleRoutage c) {
 
-        CibleRoutage[] newList = new CibleRoutage[listeAEnvoyer.length + 1];
-        for (int i = 0; i < listeAEnvoyer.length; i++) {
-            newList[i] = listeAEnvoyer[i];
+        CibleRoutage[] newList = new CibleRoutage[listeEnvoye.length + 1];
+        for (int i = 0; i < listeEnvoye.length; i++) {
+            newList[i] = listeEnvoye[i];
         }
         newList[newList.length - 1] = c;
-        listeAEnvoyer = newList;
+        listeEnvoye = newList;
         return 0;
     }
 

@@ -262,8 +262,8 @@ public class InterfaceGraphique {
 
     public static void AdministrerDonnees(BaseDeDonnees b) {
 
-        Fenetre fen = new Fenetre("Administration des donnees", 150, 100, 100);
-        Texte texte1 = new Texte("Administrer les donnees", 200, 100, 1000, 100, 50, "Cambria");
+        Fenetre fen = new Fenetre("Administration des donnees", 150, 150, 180);
+        Texte texte1 = new Texte("Administrer les donnees", 210, 100, 1000, 100, 50, "Cambria");
         fen.add(texte1);
 
         Bouton bouton1 = new Bouton("Retour", 400, 600, 200, 30);
@@ -279,14 +279,11 @@ public class InterfaceGraphique {
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // CibleRoutageCreation crc = new CibleRoutageCreation(null, "Creation cible de
-                // routage - Papier", true,
-                // "Papier", b);
-                // ToStringCibleRoutage infoToString = crc.showCibleRoutage();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
+                ArticleCreation ac = new ArticleCreation(null, "Creation d'un article", true, b);
+                ToStringCreationArticle infoToString = ac.showArticleCreation();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Création d'un article",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
 
         });
@@ -309,14 +306,8 @@ public class InterfaceGraphique {
         fen.setContentPane(fen.panel);
         bouton4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // CibleRoutageCreation crc = new CibleRoutageCreation(null, "Creation cible de
-                // routage - Papier", true,
-                // "Papier", b);
-                // ToStringCibleRoutage infoToString = crc.showCibleRoutage();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
+                fen.dispose();
+                ModificationsArticle(b);
             }
         });
 
@@ -325,14 +316,7 @@ public class InterfaceGraphique {
         fen.setContentPane(fen.panel);
         bouton5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // CibleRoutageCreation crc = new CibleRoutageCreation(null, "Creation cible de
-                // routage - Internet", true,
-                // "Internet", b);
-                // ToStringCibleRoutage infoToString = crc.showCibleRoutage();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
+                fen.dispose();
             }
         });
 
@@ -395,4 +379,91 @@ public class InterfaceGraphique {
 
     }
 
+    public static void ModificationsArticle(BaseDeDonnees b) {
+        Fenetre fen = new Fenetre("Modification des articles", 150, 150, 180);
+        Texte texte1 = new Texte("Modifier les articles", 260, 100, 1000, 100, 50, "Cambria");
+        fen.add(texte1);
+
+        Bouton bouton1 = new Bouton("Retour", 200, 600, 200, 30);
+        fen.panel.add(bouton1);
+        fen.setContentPane(fen.panel);
+        bouton1.addActionListener(e -> {
+            fen.dispose();
+            AdministrerDonnees(b);
+        });
+
+        Bouton bouton2 = new Bouton("Accueil", 600, 600, 200, 30);
+        fen.panel.add(bouton2);
+        fen.setContentPane(fen.panel);
+        bouton2.addActionListener(e -> {
+            fen.dispose();
+            Accueil(b);
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Modifier la designation", 50, 450, 200, 75);
+        fen.panel.add(bouton3);
+        fen.setContentPane(fen.panel);
+        bouton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                ArticleMAJ amaj = new ArticleMAJ(null, "Mise a jour de la designation", true, "designation", b);
+                ToStringArticleMAJ infoToString = amaj.showArticleMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification du nom",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        });
+
+        Bouton bouton4 = new Bouton("<html><center>Modifier le prix", 275, 450, 200, 75);
+        fen.panel.add(bouton4);
+        fen.setContentPane(fen.panel);
+        bouton4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                ArticleMAJ amaj = new ArticleMAJ(null, "Mise a jour du prix", true, "prix", b);
+                ToStringArticleMAJ infoToString = amaj.showArticleMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification du prix",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton5 = new Bouton("<html><center>Modifier le stock", 525, 450, 200, 75);
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                ArticleMAJ amaj = new ArticleMAJ(null, "Mise a jour du prix", true, "quantite", b);
+                ToStringArticleMAJ infoToString = amaj.showArticleMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification des stocks",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton6 = new Bouton("<html><center>Liste des articles", 750, 450, 200, 75);
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesArticles = new Fenetre("Liste des articles", "liste article", b);
+                fenListedesArticles.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesArticles.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesArticles.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesArticles.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesArticles.dispose();
+                });
+                bouton5.addActionListener(ev -> {
+                    fenListedesArticles.dispose();
+                });
+            }
+        });
+
+    }
 }
