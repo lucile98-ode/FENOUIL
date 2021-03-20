@@ -149,6 +149,8 @@ public class XMLCreation {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             String nomFichier = "cibleEnvoiEssai.xml";
+            // String nomCible = b.getListeCibleRoutagesEnvoyee()[0].getTitre();
+            // String nomFichier = nomCible + ".xml";
             StreamResult resultat = new StreamResult(new File(nomFichier));
 
             transformer.transform(source, resultat);
