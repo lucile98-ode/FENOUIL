@@ -87,8 +87,8 @@ public class IndividuCreation extends JDialog {
         panInformation.add(dateAnnee);
 
         email = new JTextField();
-        email.setPreferredSize(new Dimension(125, 25));
-        infoLabel = new JLabel("Email :");
+        email.setPreferredSize(new Dimension(115, 25));
+        infoLabel = new JLabel("Email (falcutatif):");
         panInformation.add(infoLabel);
         panInformation.add(email);
 

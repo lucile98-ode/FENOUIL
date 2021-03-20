@@ -34,7 +34,8 @@ public class ToStringCibleRoutage {
     public String toString() {
         String str;
 
-        if (this.selection != null && this.titre != "" && this.art1 != null && this.type != null) {
+        if (this.selection != null && this.titre != "" && this.art1 != null && this.type != null
+                && this.art1 != "Aucun produit enregistre") {
             str = "Recapitulatif de la creation\n";
             str += "Selection : " + this.selection + "\n";
             str += "Titre : " + this.titre + "\n";
@@ -55,12 +56,11 @@ public class ToStringCibleRoutage {
                 str += "Description : " + this.description + "\n";
             }
             str += "Type : " + this.type + "\n";
+            if (this.style != null) {
+                str += "Style : " + this.style + "\n";
+            }
         } else {
             str = "Aucune information !";
-        }
-
-        if (this.style != null) {
-            str += "Style : " + this.style + "\n";
         }
 
         return str;

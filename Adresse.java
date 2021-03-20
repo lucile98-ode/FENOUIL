@@ -12,6 +12,7 @@ public class Adresse {
         this.ville = ville;
     }
 
+    // GETTERS
     public int getNumero() {
         return numero;
     }
@@ -26,6 +27,23 @@ public class Adresse {
 
     public String getVille() {
         return ville;
+    }
+
+    // SETTERS
+    public void setNumero(int newNumero) {
+        this.numero = newNumero;
+    }
+
+    public void setRue(String newRue) {
+        this.rue = newRue;
+    }
+
+    public void setCodePostal(int newCodePostal) {
+        this.codePostal = newCodePostal;
+    }
+
+    public void setVille(String newVille) {
+        this.ville = newVille;
     }
 
 }

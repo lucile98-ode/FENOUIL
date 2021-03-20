@@ -67,4 +67,40 @@ public class Individu {
         return caracteristiqueCommerciale;
     }
 
+    // SETTERS
+    public void setNom(String newNom) {
+        this.nom = newNom;
+    }
+
+    public void setCategorie(String newCategorie) {
+        this.categorieSocioProfessionnelle = newCategorie;
+    }
+
+    public void setTelephone(String newTelephone) {
+        this.numeroTelephone = newTelephone;
+    }
+
+    public void setEmail(String newEmail) {
+        this.adresseMail = newEmail;
+    }
+
+    public void setCaracteristique(String newCaracteristique) {
+        this.caracteristiqueCommerciale = newCaracteristique;
+    }
+
+    public void setNumeroAdresse(int newNumero) {
+        this.adresse.setNumero(newNumero);
+    }
+
+    public void setRueAdresse(String newRue) {
+        this.adresse.setRue(newRue);
+    }
+
+    public void setDepartementAdresse(int newDepartement) {
+        this.adresse.setCodePostal(newDepartement);
+    }
+
+    public void setVilleAdresse(String newVille) {
+        this.adresse.setVille(newVille);
+    }
 }

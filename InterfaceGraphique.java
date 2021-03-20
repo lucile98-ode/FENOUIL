@@ -17,7 +17,7 @@ public class InterfaceGraphique {
                 "Cambria");
         fen.add(texte3);
 
-        Bouton bouton1 = new Bouton("<html><center>Menu Cible de routage Connexion", 50, 450, 200, 60);
+        Bouton bouton1 = new Bouton("<html><center>Menu Cible de routage \nConnexion", 50, 450, 200, 60);
         fen.panel.add(bouton1);
         fen.setContentPane(fen.panel);
         bouton1.addActionListener(new ActionListener() {
@@ -29,21 +29,21 @@ public class InterfaceGraphique {
             }
         });
 
-        Bouton bouton2 = new Bouton("Saisir une commande", 275, 450, 200, 60);
+        Bouton bouton2 = new Bouton("<html><center>Connexion - Menu Saisie de commande", 275, 450, 200, 60);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(e -> {
             fen.dispose();
         });
 
-        Bouton bouton3 = new Bouton("Anomalie", 525, 450, 200, 60);
+        Bouton bouton3 = new Bouton("<html><center>Connexion - Menu Anomalies", 525, 450, 200, 60);
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(e -> {
             fen.dispose();
         });
 
-        Bouton bouton4 = new Bouton("Referentiel des individus", 750, 450, 200, 60);
+        Bouton bouton4 = new Bouton("<html><center>Connexion - Menu Administration du référentiel", 750, 450, 200, 60);
         fen.panel.add(bouton4);
         fen.setContentPane(fen.panel);
         bouton4.addActionListener(new ActionListener() {
@@ -262,8 +262,8 @@ public class InterfaceGraphique {
 
     public static void AdministrerDonnees(BaseDeDonnees b) {
 
-        Fenetre fen = new Fenetre("Administration des donnees", 150, 150, 180);
-        Texte texte1 = new Texte("Administrer les donnees", 210, 100, 1000, 100, 50, "Cambria");
+        Fenetre fen = new Fenetre("Administration des donnees", 120, 150, 180);
+        Texte texte1 = new Texte("Administrer les donnees", 210, 120, 1000, 100, 50, "Cambria");
         fen.add(texte1);
 
         Bouton bouton1 = new Bouton("Retour", 400, 600, 200, 30);
@@ -317,6 +317,7 @@ public class InterfaceGraphique {
         bouton5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 fen.dispose();
+                ModificationsIndividu(b);
             }
         });
 
@@ -400,7 +401,7 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Modifier la designation", 50, 450, 200, 75);
+        Bouton bouton3 = new Bouton("<html><center>Modifier la designation", 50, 350, 200, 75);
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(new ActionListener() {
@@ -414,7 +415,7 @@ public class InterfaceGraphique {
 
         });
 
-        Bouton bouton4 = new Bouton("<html><center>Modifier le prix", 275, 450, 200, 75);
+        Bouton bouton4 = new Bouton("<html><center>Modifier le prix", 275, 350, 200, 75);
         fen.panel.add(bouton4);
         fen.setContentPane(fen.panel);
         bouton4.addActionListener(new ActionListener() {
@@ -427,7 +428,7 @@ public class InterfaceGraphique {
             }
         });
 
-        Bouton bouton5 = new Bouton("<html><center>Modifier le stock", 525, 450, 200, 75);
+        Bouton bouton5 = new Bouton("<html><center>Modifier le stock", 525, 350, 200, 75);
         fen.panel.add(bouton5);
         fen.setContentPane(fen.panel);
         bouton5.addActionListener(new ActionListener() {
@@ -440,7 +441,7 @@ public class InterfaceGraphique {
             }
         });
 
-        Bouton bouton6 = new Bouton("<html><center>Liste des articles", 750, 450, 200, 75);
+        Bouton bouton6 = new Bouton("<html><center>Liste des articles", 750, 350, 200, 75);
         fen.panel.add(bouton6);
         fen.setContentPane(fen.panel);
         bouton6.addActionListener(new ActionListener() {
@@ -466,4 +467,127 @@ public class InterfaceGraphique {
         });
 
     }
+
+    public static void ModificationsIndividu(BaseDeDonnees b) {
+        Fenetre fen = new Fenetre("Modification des individus", 150, 150, 180);
+        Texte texte1 = new Texte("Modifier les individus", 260, 100, 1000, 100, 50, "Cambria");
+        fen.add(texte1);
+
+        Bouton bouton1 = new Bouton("Retour", 200, 600, 200, 30);
+        fen.panel.add(bouton1);
+        fen.setContentPane(fen.panel);
+        bouton1.addActionListener(e -> {
+            fen.dispose();
+            AdministrerDonnees(b);
+        });
+
+        Bouton bouton2 = new Bouton("Accueil", 600, 600, 200, 30);
+        fen.panel.add(bouton2);
+        fen.setContentPane(fen.panel);
+        bouton2.addActionListener(e -> {
+            fen.dispose();
+            Accueil(b);
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Modifier le nom", 100, 300, 200, 75);
+        fen.panel.add(bouton3);
+        fen.setContentPane(fen.panel);
+        bouton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                IndividuMAJ imaj = new IndividuMAJ(null, "Mise a jour du nom de famille", true, "nom", b);
+                ToStringIndividuMAJ infoToString = imaj.showIndividuMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification du nom",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        });
+
+        Bouton bouton4 = new Bouton("<html><center>Modifier les coordonnees", 400, 300, 200, 75);
+        fen.panel.add(bouton4);
+        fen.setContentPane(fen.panel);
+        bouton4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                IndividuMAJ imaj = new IndividuMAJ(null, "Mise a jour des coordonnees", true, "coordonnees", b);
+                ToStringIndividuMAJ infoToString = imaj.showIndividuMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification des coordonnees",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton5 = new Bouton("<html><center>Modifier l'adresse de residence", 700, 300, 200, 75);
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                IndividuMAJ amaj = new IndividuMAJ(null, "Mise a jour de l'adresse de residence", true, "adresse", b);
+                ToStringIndividuMAJ infoToString = amaj.showIndividuMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification de l'adressse de residence",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton6 = new Bouton("<html><center>Modifier la categorie socio-professionnelle", 100, 450, 200, 75);
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                IndividuMAJ amaj = new IndividuMAJ(null, "Mise a jour de la categorie socio-professionnelle", true,
+                        "categorie", b);
+                ToStringIndividuMAJ infoToString = amaj.showIndividuMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(),
+                        "Modification de la categorie socio-professionnelle", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton7 = new Bouton("<html><center>Modifier la caracteristique commerciale", 400, 450, 200, 75);
+        fen.panel.add(bouton7);
+        fen.setContentPane(fen.panel);
+        bouton7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                IndividuMAJ amaj = new IndividuMAJ(null, "Mise a jour de la caracteristique commerciale de l'individu",
+                        true, "caracteristique", b);
+                ToStringIndividuMAJ infoToString = amaj.showIndividuMAJ();
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, infoToString.toString(), "Modification de la caracteristique commerciale",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Bouton bouton8 = new Bouton("<html><center>Liste des individus", 700, 450, 200, 75);
+        fen.panel.add(bouton8);
+        fen.setContentPane(fen.panel);
+        bouton8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesIndividus = new Fenetre("Liste des individus", "liste individu", b);
+                fenListedesIndividus.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton5.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton6.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+                bouton7.addActionListener(ev -> {
+                    fenListedesIndividus.dispose();
+                });
+            }
+        });
+
+    }
+
 }

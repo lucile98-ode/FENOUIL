@@ -17,6 +17,9 @@ public class Main {
                                 "individu@exemple.fr", "client");
 
                 b.addArticle("012345", "pot de peinture", 30, 50);
+                b.addArticle("94248", "carrelage", 100, 50);
+                b.addArticle("2343", "colle", 20, 50);
+                b.addArticle("8477493", "ciment", 40, 50);
 
         }
 }
