@@ -1,5 +1,7 @@
 # FENOUIL
 Projet GPI-L2BHA
+
+SI VOUS NE FAITES PAS PARTIE DE LA LISTE CI-JOINTE VEUILLEZ A NE PAS INTERFERER DANS CE GIT, merci!
 Les collaborateurs sur ce  projet  sont:
 - Lucile98-ode = FREYSSAC Lucile 20180400
 - HaceneM = MENGUELTI Hacène 20174095
