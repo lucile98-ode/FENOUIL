@@ -1,13 +1,13 @@
-public class ToStringConnexion {
+public class ToStringConnexionCibleRoutage {
     private String selection, mdp;
     Fenetre fen;
     Mdp motDePasse = new Mdp();
     BaseDeDonnees b;
 
-    public ToStringConnexion() {
+    public ToStringConnexionCibleRoutage() {
     }
 
-    public ToStringConnexion(String selection, String mdp, Fenetre fen, BaseDeDonnees b) {
+    public ToStringConnexionCibleRoutage(String selection, String mdp, Fenetre fen, BaseDeDonnees b) {
         this.selection = selection;
         this.mdp = mdp;
         this.fen = fen;

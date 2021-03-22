@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ConnexionIndividu extends JDialog {
-    private ToStringConnexion infoToString = new ToStringConnexion();
+public class ConnexionAdmin extends JDialog {
+    private ToStringConnexionAdmin infoToString = new ToStringConnexionAdmin();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;
     private JComboBox selection;
@@ -21,7 +21,7 @@ public class ConnexionIndividu extends JDialog {
     Fenetre fen;
     BaseDeDonnees b;
 
-    public ConnexionIndividu(JFrame parent, String title, boolean modal, Fenetre f, BaseDeDonnees bd) {
+    public ConnexionAdmin(JFrame parent, String title, boolean modal, Fenetre f, BaseDeDonnees bd) {
         super(parent, title, modal);
         this.setSize(700, 150);
         this.setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class ConnexionIndividu extends JDialog {
         this.initComponent();
     }
 
-    public ToStringConnexion showConnexion() {
+    public ToStringConnexionAdmin showConnexionAdmin() {
         this.sendData = false;
         this.setVisible(true);
         return this.infoToString;
@@ -47,9 +47,7 @@ public class ConnexionIndividu extends JDialog {
         panSelection.setBorder(BorderFactory.createTitledBorder("Identifiant "));
         selection = new JComboBox();
         selection.addItem("");
-        selection.addItem("Membre du departement \"Prospection\"");
-        selection.addItem("Directeur de la strategie");
-        selection.addItem("Responsable du routage");
+        selection.addItem("Administrateur de donnee");
         selectionLabel = new JLabel("Vous etes : ");
         panSelection.add(selectionLabel);
         panSelection.add(selection);
@@ -75,7 +73,7 @@ public class ConnexionIndividu extends JDialog {
 
         okBouton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                infoToString = new ToStringConnexion((String) selection.getSelectedItem(), mdp.getText(), fen, b);
+                infoToString = new ToStringConnexionAdmin((String) selection.getSelectedItem(), mdp.getText(), fen, b);
                 setVisible(false);
             }
         });

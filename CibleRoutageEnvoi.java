@@ -90,6 +90,10 @@ public class CibleRoutageEnvoi extends JDialog {
 
                     b.addCibleRoutagesAEnvoyer(b.getListeCibleRoutagesValide()[cibleIndex]);
                     b.delCibleRoutageValide(b.getListeCibleRoutagesValide()[cibleIndex]);
+
+                    // CREER LE FICHIER XML :
+                    XMLCreation.CreerXML(b);
+                    XMLChangeRepertoire.XMLChangeRepertoire(b);
                 }
                 setVisible(false);
             }

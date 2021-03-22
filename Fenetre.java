@@ -58,7 +58,7 @@ public class Fenetre extends JFrame {
             }
 
             // Les titres des colonnes
-            String title[] = { "Titre", "Slection par", "Description", "Article n°1", "Article n°2", "Article n°3",
+            String title[] = { "Titre", "Selection par", "Description", "Article n°1", "Article n°2", "Article n°3",
                     "Article n°4", "Article n°5", "Style", "Type" };
             JTable tableau = new JTable(data, title) {
                 public boolean isCellEditable(int row, int col) {
@@ -86,7 +86,7 @@ public class Fenetre extends JFrame {
             }
 
             // Les titres des colonnes
-            String title[] = { "Titre", "Slection par", "Description", "Article n°1", "Article n°2", "Article n°3",
+            String title[] = { "Titre", "Selection par", "Description", "Article n°1", "Article n°2", "Article n°3",
                     "Article n°4", "Article n°5", "Style", "Type" };
             JTable tableau = new JTable(data, title) {
                 public boolean isCellEditable(int row, int col) {
@@ -114,8 +114,56 @@ public class Fenetre extends JFrame {
             }
 
             // Les titres des colonnes
-            String title[] = { "Titre", "Slection par", "Description", "Article n°1", "Article n°2", "Article n°3",
+            String title[] = { "Titre", "Selection par", "Description", "Article n°1", "Article n°2", "Article n°3",
                     "Article n°4", "Article n°5", "Style", "Type" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
+        } else if (cible == "liste individu") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeIndividus().length][9];
+
+            for (int i = 0; i < b.getListeIndividus().length; i++) {
+                data[i][0] = b.getListeIndividus()[i].getNom();
+                data[i][1] = b.getListeIndividus()[i].getPrenom();
+                data[i][2] = b.getListeIndividus()[i].getAge();
+                data[i][3] = b.getListeIndividus()[i].getDateNaissance();
+                data[i][4] = b.getListeIndividus()[i].getCategorieSocioProfessionnelle();
+                data[i][5] = b.getListeIndividus()[i].getAdresse();
+                data[i][6] = b.getListeIndividus()[i].getNumeroTelephone();
+                data[i][7] = b.getListeIndividus()[i].getAdresseMail();
+                data[i][8] = b.getListeIndividus()[i].getCaracteristiqueCommerciale();
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Nom", "Prenom", "Age", "Date de naissance", "Categorie Socio Professionnelle",
+                    "Adresse", "Numero de telephone", "email", "Carateristique commerciale" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+        }
+
+        else if (cible == "liste article") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeArticles().length][4];
+
+            for (int i = 0; i < b.getListeArticles().length; i++) {
+                data[i][0] = b.getListeArticles()[i].getNumero();
+                data[i][1] = b.getListeArticles()[i].getDesignation();
+                data[i][2] = b.getListeArticles()[i].getPrix() + " euros";
+                data[i][3] = b.getListeArticles()[i].getQuantite();
+
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero", "Designation", "Prix", "Quantite en stock" };
             JTable tableau = new JTable(data, title) {
                 public boolean isCellEditable(int row, int col) {
                     return false;

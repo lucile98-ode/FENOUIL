@@ -1,8 +1,15 @@
+import java.util.Locale.Category;
+
+import javax.print.attribute.standard.Destination;
+
 public class BaseDeDonnees {
 
     private CibleRoutage[] listeCibleRoutage = new CibleRoutage[0];
     private CibleRoutage[] listeValide = new CibleRoutage[0];
-    CibleRoutage[] listeAEnvoyer = new CibleRoutage[0];
+    private CibleRoutage[] listeEnvoye = new CibleRoutage[0];
+
+    private Individu[] listeIndividu = new Individu[0];
+    private Article[] listeArticle = new Article[0];
 
     public BaseDeDonnees() {
 
@@ -18,12 +25,22 @@ public class BaseDeDonnees {
     }
 
     public CibleRoutage[] getListeCibleRoutagesEnvoyee() {
-        return listeAEnvoyer;
+        return listeEnvoye;
     }
 
-    public CibleRoutage getCibleRoutageEnvoye(int index) {
-        return listeAEnvoyer[index];
+    public Individu[] getListeIndividus() {
+        return listeIndividu;
     }
+
+    public Article[] getListeArticles() {
+        return listeArticle;
+    }
+
+    // POUR UN DEBUG
+    public CibleRoutage getCibleRoutageEnvoye(int index) {
+        return listeEnvoye[index];
+    }
+    //
 
     // ADDERS
     public int addCibleRoutages(String selection, String titre, String article1, String article2, String article3,
@@ -54,12 +71,40 @@ public class BaseDeDonnees {
 
     public int addCibleRoutagesAEnvoyer(CibleRoutage c) {
 
-        CibleRoutage[] newList = new CibleRoutage[listeAEnvoyer.length + 1];
-        for (int i = 0; i < listeAEnvoyer.length; i++) {
-            newList[i] = listeAEnvoyer[i];
+        CibleRoutage[] newList = new CibleRoutage[listeEnvoye.length + 1];
+        for (int i = 0; i < listeEnvoye.length; i++) {
+            newList[i] = listeEnvoye[i];
         }
         newList[newList.length - 1] = c;
-        listeAEnvoyer = newList;
+        listeEnvoye = newList;
+        return 0;
+    }
+
+    public int addIndividu(String nom, String prenom, DateNaissance date, String categorieSocioProfessionnelle,
+            Adresse adresse, String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
+
+        Individu individu = new Individu(nom, prenom,
+                new DateNaissance(date.getJour(), date.getMois(), date.getAnnee()), categorieSocioProfessionnelle,
+                new Adresse(adresse.getNumero(), adresse.getRue(), adresse.getCodePostal(), adresse.getVille()),
+                numeroTelephone, adresseMail, caracteristiqueCommerciale);
+
+        Individu[] newList = new Individu[listeIndividu.length + 1];
+        for (int i = 0; i < listeIndividu.length; i++) {
+            newList[i] = listeIndividu[i];
+        }
+        newList[newList.length - 1] = individu;
+        listeIndividu = newList;
+        return 0;
+    }
+
+    public int addArticle(String numero, String designation, float prix, int quantite) {
+        Article a = new Article(numero, designation, prix, quantite);
+        Article[] newList = new Article[listeArticle.length + 1];
+        for (int i = 0; i < listeArticle.length; i++) {
+            newList[i] = listeArticle[i];
+        }
+        newList[newList.length - 1] = a;
+        listeArticle = newList;
         return 0;
     }
 
@@ -127,6 +172,35 @@ public class BaseDeDonnees {
                     j++;
                 }
                 listeValide = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delIndividu(Individu individu) {
+        if (listeIndividu.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeIndividu.length; i++) {
+                if (individu.equals(listeIndividu[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Individu[] newlist = new Individu[(listeIndividu.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeIndividu.length; i++) {
+                    if (individu.equals(listeIndividu[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeIndividu[i];
+                    j++;
+                }
+                listeIndividu = newlist;
                 return 0;
             } else {
                 return -1;

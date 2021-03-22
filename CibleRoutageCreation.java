@@ -27,7 +27,7 @@ public class CibleRoutageCreation extends JDialog {
 
     public CibleRoutageCreation(JFrame parent, String title, boolean modal, String TPub, BaseDeDonnees bd) {
         super(parent, title, modal);
-        this.setSize(700, 290);
+        this.setSize(700, 320);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -61,66 +61,51 @@ public class CibleRoutageCreation extends JDialog {
         // Article
         JPanel panArticle = new JPanel();
         panArticle.setBackground(Color.white);
-        panArticle.setPreferredSize(new Dimension(575, 60));
+        panArticle.setPreferredSize(new Dimension(575, 90));
         panArticle.setBorder(BorderFactory.createTitledBorder("Selection des articles (5 max)"));
         art1 = new JComboBox();
-        art1.addItem("peinture");
-        art1.addItem("carrelage");
-        art1.addItem("parpaing");
-        art1.addItem("marteau");
-        art1.addItem("pinceau");
-        art1.addItem("briques");
-        art1.addItem("perceuse");
-        art1.addItem("colle");
-        art1.addItem("ciment");
+        if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
+            art1.addItem("Aucun produit enregistre");
+        }
+        for (int i = 0; i < b.getListeArticles().length; i++) {
+            art1.addItem(b.getListeArticles()[i].getDesignation());
+        }
 
         art2 = new JComboBox();
+        if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
+            art2.addItem("Aucun produit enregistre");
+        }
         art2.addItem("");
-        art2.addItem("peinture");
-        art2.addItem("carrelage");
-        art2.addItem("parpaing");
-        art2.addItem("marteau");
-        art2.addItem("pinceau");
-        art2.addItem("briques");
-        art2.addItem("perceuse");
-        art2.addItem("colle");
-        art2.addItem("ciment");
+        for (int i = 0; i < b.getListeArticles().length; i++) {
+            art2.addItem(b.getListeArticles()[i].getDesignation());
+        }
 
         art3 = new JComboBox();
+        if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
+            art3.addItem("Aucun produit enregistre");
+        }
         art3.addItem("");
-        art3.addItem("peinture");
-        art3.addItem("carrelage");
-        art3.addItem("parpaing");
-        art3.addItem("marteau");
-        art3.addItem("pinceau");
-        art3.addItem("briques");
-        art3.addItem("perceuse");
-        art3.addItem("colle");
-        art3.addItem("ciment");
+        for (int i = 0; i < b.getListeArticles().length; i++) {
+            art3.addItem(b.getListeArticles()[i].getDesignation());
+        }
 
         art4 = new JComboBox();
+        if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
+            art4.addItem("Aucun produit enregistre");
+        }
         art4.addItem("");
-        art4.addItem("peinture");
-        art4.addItem("carrelage");
-        art4.addItem("parpaing");
-        art4.addItem("marteau");
-        art4.addItem("pinceau");
-        art4.addItem("briques");
-        art4.addItem("perceuse");
-        art4.addItem("colle");
-        art4.addItem("ciment");
+        for (int i = 0; i < b.getListeArticles().length; i++) {
+            art4.addItem(b.getListeArticles()[i].getDesignation());
+        }
 
         art5 = new JComboBox();
+        if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
+            art5.addItem("Aucun produit enregistre");
+        }
         art5.addItem("");
-        art5.addItem("peinture");
-        art5.addItem("carrelage");
-        art5.addItem("parpaing");
-        art5.addItem("marteau");
-        art5.addItem("pinceau");
-        art5.addItem("briques");
-        art5.addItem("perceuse");
-        art5.addItem("colle");
-        art5.addItem("ciment");
+        for (int i = 0; i < b.getListeArticles().length; i++) {
+            art5.addItem(b.getListeArticles()[i].getDesignation());
+        }
 
         articleLabel = new JLabel("");
         panArticle.add(articleLabel);
