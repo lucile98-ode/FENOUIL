@@ -9,3 +9,6 @@ Les collaborateurs sur ce  projet  sont:
 
 Pour ce faire tourner la base de données il faut télécharger MySQL.
 Le code étant écrit en JAVA .
+
+
+Site internet:  https://l2bha.wordpress.com/
