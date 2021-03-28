@@ -13,6 +13,6 @@ Pour faire tourner la base de données il faudra télécharger MySQL.
 Le code étant écrit en JAVA.
 
 
-Machine virtuelle:
+Machine virtuelle :
 
-Site internet: https://l2bha.wordpress.com/
+Site internet : https://l2bha.wordpress.com/
