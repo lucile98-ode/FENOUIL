@@ -1,9 +1,12 @@
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.JTextArea;
 
 public class Fenetre extends JFrame {
 
@@ -131,7 +134,7 @@ public class Fenetre extends JFrame {
                 data[i][0] = b.getListeIndividus()[i].getNom();
                 data[i][1] = b.getListeIndividus()[i].getPrenom();
                 data[i][2] = b.getListeIndividus()[i].getAge();
-                data[i][3] = b.getListeIndividus()[i].getDateNaissance();
+                data[i][3] = b.getListeIndividus()[i].getDate();
                 data[i][4] = b.getListeIndividus()[i].getCategorieSocioProfessionnelle();
                 data[i][5] = b.getListeIndividus()[i].getAdresse();
                 data[i][6] = b.getListeIndividus()[i].getNumeroTelephone();
@@ -148,9 +151,8 @@ public class Fenetre extends JFrame {
                 }
             };
             this.getContentPane().add(new JScrollPane(tableau));
-        }
 
-        else if (cible == "liste article") {
+        } else if (cible == "liste article") {
             // Les donnees du tableau
             Object data[][] = new Object[b.getListeArticles().length][4];
 
@@ -170,7 +172,47 @@ public class Fenetre extends JFrame {
                 }
             };
             this.getContentPane().add(new JScrollPane(tableau));
+
         }
+
+    }
+
+    public Fenetre(String vFenetre, String type, Commande cmd) {
+
+        this.setTitle(vFenetre);
+        this.setSize(300, 400);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        Color couleur = new ColorUIResource(0, 0, 0);
+        panel.setBackground(couleur);
+
+        JPanel panel = new JPanel();
+        if (type == "CB") {
+            JTextArea labelArea = new JTextArea(cmd.toStringCommandeCB());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            labelArea.setEnabled(false);
+            panel.add(labelArea);
+        } else if (type == "CHEQUE") {
+            JTextArea labelArea = new JTextArea(cmd.toStringCommandeCheque());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            labelArea.setEnabled(false);
+            panel.add(labelArea);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(0, 0, 350, 400);
+
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(350, 400));
+        contentPane.add(scrollPane);
+        this.setContentPane(contentPane);
+        this.pack();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
 
     }
 

@@ -206,7 +206,6 @@ public class CibleRoutageCreation extends JDialog {
                             (String) art3.getSelectedItem(), (String) art4.getSelectedItem(),
                             (String) art5.getSelectedItem(), description.getText(), (String) style.getSelectedItem(),
                             (String) type.getSelectedItem(), b.getListeIndividus());
-                    // System.out.println(b.toString());
                 } else if (typePub == "Internet") {
                     infoToString = new ToStringCibleRoutage((String) selection.getSelectedItem(), titre.getText(),
                             (String) art1.getSelectedItem(), (String) art2.getSelectedItem(),
@@ -220,27 +219,7 @@ public class CibleRoutageCreation extends JDialog {
                             b.getListeIndividus());
                 }
 
-                // vselection = (String) selection.getSelectedItem();
-                // vtitre = titre.getText();
-                // vart1 = (String) art1.getSelectedItem();
-                // vart2 = (String) art2.getSelectedItem();
-                // vart3 = (String) art3.getSelectedItem();
-                // vart4 = (String) art4.getSelectedItem();
-                // vart5 = (String) art5.getSelectedItem();
-                // vdescription = description.getText();
-                // if (typePub == "Papier") {
-                // vstyle = (String) style.getSelectedItem();
-                // } else {
-                // vstyle = "";
-                // }
-                // vtype = (String) type.getSelectedItem();
-
                 setVisible(false);
-                // Selection s = new Selection(null, "Definir : " + (String)
-                // selection.getSelectedItem(), true, b,
-                // (String) selection.getSelectedItem(), infoToString);
-
-                // ToStringCibleRoutage infoToString = s.showCibleRoutage();
             }
         });
 

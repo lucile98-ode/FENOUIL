@@ -23,13 +23,13 @@ public class IndividuCreation extends JDialog {
 
     BaseDeDonnees b;
 
-    public IndividuCreation(JFrame parent, String title, boolean modal, BaseDeDonnees bd) {
+    public IndividuCreation(JFrame parent, String title, boolean modal, BaseDeDonnees b) {
         super(parent, title, modal);
         this.setSize(700, 320);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        b = bd;
+        this.b = b;
         this.initComponent();
     }
 
@@ -172,8 +172,7 @@ public class IndividuCreation extends JDialog {
                         (String) caracteristiqueCommercial.getSelectedItem());
 
                 b.addIndividu((String) nom.getText(), (String) prenom.getText(),
-                        new DateNaissance(
-                                (int) dateJour.getValue(), (int) dateMois.getValue(), (int) dateAnnee.getValue()),
+                        new Date((int) dateJour.getValue(), (int) dateMois.getValue(), (int) dateAnnee.getValue()),
                         (String) categorieSocioProfessionnelle.getSelectedItem(),
                         new Adresse((int) adresseNumero.getValue(), (String) adresseRue.getText(),
                                 (int) departement.getValue(), (String) ville.getText()),

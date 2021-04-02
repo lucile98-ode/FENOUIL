@@ -10,6 +10,10 @@ public class BaseDeDonnees {
     private CategorieSocioProfessionnelle[] listeCategorieSocioProfessionnelles = new CategorieSocioProfessionnelle[0];
     private DepartementResidence[] listeDepartementResidence = new DepartementResidence[0];
 
+    private Commande[] listeCommandes = new Commande[0];
+    private Commande[] listeCommandesValidees = new Commande[0];
+    private Commande[] listeCommandesEnCours = new Commande[0];
+
     public BaseDeDonnees() {
 
     }
@@ -41,6 +45,18 @@ public class BaseDeDonnees {
 
     public DepartementResidence[] getListeDepartementResidence() {
         return listeDepartementResidence;
+    }
+
+    public Commande[] getListeCommande() {
+        return listeCommandes;
+    }
+
+    public Commande[] getListeCommandeValidees() {
+        return listeCommandesValidees;
+    }
+
+    public Commande[] getListeCommandeEnCours() {
+        return listeCommandesEnCours;
     }
 
     // POUR UN DEBUG
@@ -87,11 +103,11 @@ public class BaseDeDonnees {
         return 0;
     }
 
-    public int addIndividu(String nom, String prenom, DateNaissance date, String categorieSocioProfessionnelle,
-            Adresse adresse, String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
+    public int addIndividu(String nom, String prenom, Date date, String categorieSocioProfessionnelle, Adresse adresse,
+            String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
 
-        Individu individu = new Individu(nom, prenom,
-                new DateNaissance(date.getJour(), date.getMois(), date.getAnnee()), categorieSocioProfessionnelle,
+        Individu individu = new Individu(nom, prenom, new Date(date.getJour(), date.getMois(), date.getAnnee()),
+                categorieSocioProfessionnelle,
                 new Adresse(adresse.getNumero(), adresse.getRue(), adresse.getCodePostal(), adresse.getVille()),
                 numeroTelephone, adresseMail, caracteristiqueCommerciale);
 
@@ -149,6 +165,31 @@ public class BaseDeDonnees {
         return 0;
     }
 
+    public int addCommande(Individu individu, Article[] listeArticlesCommande, Reglement reglement, float montant,
+            String numeroCommande) {
+
+        Commande commande = new Commande(individu, listeArticlesCommande, reglement, montant, numeroCommande);
+
+        Commande[] newList = new Commande[listeCommandes.length + 1];
+        for (int i = 0; i < listeCommandes.length; i++) {
+            newList[i] = listeCommandes[i];
+        }
+        newList[newList.length - 1] = commande;
+        listeCommandes = newList;
+        return 0;
+    }
+
+    public int addCommandeValide(Commande c) {
+
+        Commande[] newList = new Commande[listeCommandesValidees.length + 1];
+        for (int i = 0; i < listeCommandesValidees.length; i++) {
+            newList[i] = listeCommandesValidees[i];
+        }
+        newList[newList.length - 1] = c;
+        listeCommandesValidees = newList;
+        return 0;
+    }
+
     // TOSTRING PROVISOIRE DANS LA CONSOLE
     public String toStringCible() {
         String s = "nb de cible : " + listeCibleRoutage.length + "\n";
@@ -163,7 +204,7 @@ public class BaseDeDonnees {
         return s;
     }
 
-    // DELETE
+    // DELETES
     public int delCibleRoutage(CibleRoutage c) {
         if (listeCibleRoutage.length != 0) {
             boolean isFind = false;
@@ -242,6 +283,64 @@ public class BaseDeDonnees {
                     j++;
                 }
                 listeIndividu = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delCommande(Commande c) {
+        if (listeCommandes.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeCommandes.length; i++) {
+                if (c.equals(listeCommandes[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Commande[] newlist = new Commande[(listeCommandes.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeCommandes.length; i++) {
+                    if (c.equals(listeCommandes[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeCommandes[i];
+                    j++;
+                }
+                listeCommandes = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delCommandeEnCours(Commande c) {
+        if (listeCommandesEnCours.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeCommandesEnCours.length; i++) {
+                if (c.equals(listeCommandesEnCours[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Commande[] newlist = new Commande[(listeCommandesEnCours.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeCommandesEnCours.length; i++) {
+                    if (c.equals(listeCommandesEnCours[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeCommandesEnCours[i];
+                    j++;
+                }
+                listeCommandesEnCours = newlist;
                 return 0;
             } else {
                 return -1;

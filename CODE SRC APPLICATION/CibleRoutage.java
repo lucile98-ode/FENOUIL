@@ -70,11 +70,11 @@ public class CibleRoutage {
     }
 
     // ADDERS
-    public int addIndividu(String nom, String prenom, DateNaissance date, String categorieSocioProfessionnelle,
-            Adresse adresse, String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
+    public int addIndividu(String nom, String prenom, Date date, String categorieSocioProfessionnelle, Adresse adresse,
+            String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
 
-        Individu individu = new Individu(nom, prenom,
-                new DateNaissance(date.getJour(), date.getMois(), date.getAnnee()), categorieSocioProfessionnelle,
+        Individu individu = new Individu(nom, prenom, new Date(date.getJour(), date.getMois(), date.getAnnee()),
+                categorieSocioProfessionnelle,
                 new Adresse(adresse.getNumero(), adresse.getRue(), adresse.getCodePostal(), adresse.getVille()),
                 numeroTelephone, adresseMail, caracteristiqueCommerciale);
 
@@ -86,5 +86,4 @@ public class CibleRoutage {
         individusCibles = newList;
         return 0;
     }
-
 }

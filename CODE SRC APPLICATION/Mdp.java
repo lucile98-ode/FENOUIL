@@ -4,13 +4,17 @@ public class Mdp {
     // departement prospection -> mdp = departement
     // directeur de la strategie -> mdp = directeur
     // responsable de routage -> mdp = responsable
-    // administateur de donee -> mdp = administateur
+    // administateur de donnee -> mdp = administateur
+    // assistants de saisie -> mdp = assistant
+
     final String mdpDepartementProspection = "departement";
     final String mdpDirecteurStrategie = "directeur";
     final String mdpResponsableRoutage = "responsable";
     final String mdpAdministrateurDonnees = "administrateur";
+    final String mdpAssistantSaisie = "assistant";
 
-    public String[] mdp = new String[] { mdpDepartementProspection, mdpDirecteurStrategie, mdpResponsableRoutage };
+    public String[] mdp = new String[] { mdpDepartementProspection, mdpDirecteurStrategie, mdpResponsableRoutage,
+            mdpAdministrateurDonnees, mdpAssistantSaisie };
 
     public Mdp() {
     }
@@ -31,4 +35,9 @@ public class Mdp {
     public String getMdpAdministrateurDonnees() {
         return mdpAdministrateurDonnees;
     }
+
+    public String getMdpAssistantSaisie() {
+        return mdpAssistantSaisie;
+    }
+
 }

@@ -12,6 +12,10 @@ public class Article {
         this.quantite = quantite;
     }
 
+    public Article(String numero) {
+        this.numero = numero;
+    }
+
     // GETTERS
     public String getNumero() {
         return numero;
@@ -41,13 +45,5 @@ public class Article {
     public void setQuantite(int newQuantite) {
         this.quantite = newQuantite;
     }
-
-    // public void addQuantite(int quantiteAjoute) {
-    // this.quantite += quantiteAjoute;
-    // }
-
-    // public void delQuantite(int quantiteSoustraire) {
-    // this.quantite += quantiteSoustraire;
-    // }
 
 }

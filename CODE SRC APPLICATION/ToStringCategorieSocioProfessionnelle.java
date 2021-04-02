@@ -1,5 +1,4 @@
 public class ToStringCategorieSocioProfessionnelle {
-
     private String categorie;
 
     public ToStringCategorieSocioProfessionnelle() {
@@ -21,6 +20,6 @@ public class ToStringCategorieSocioProfessionnelle {
             str = "Aucune information !";
         }
         return str;
-
     }
+
 }

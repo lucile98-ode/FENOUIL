@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ConnexionCibleRoutage extends JDialog {
-    private ToStringConnexionCibleRoutage infoToString = new ToStringConnexionCibleRoutage();
+public class ConnexionSaisie extends JDialog {
+    private ToStringConnexionSaisie infoToString = new ToStringConnexionSaisie();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;
     private JComboBox selection;
@@ -21,7 +21,7 @@ public class ConnexionCibleRoutage extends JDialog {
     Fenetre fen;
     BaseDeDonnees b;
 
-    public ConnexionCibleRoutage(JFrame parent, String title, boolean modal, Fenetre f, BaseDeDonnees bd) {
+    public ConnexionSaisie(JFrame parent, String title, boolean modal, Fenetre f, BaseDeDonnees bd) {
         super(parent, title, modal);
         this.setSize(700, 150);
         this.setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class ConnexionCibleRoutage extends JDialog {
         this.initComponent();
     }
 
-    public ToStringConnexionCibleRoutage showConnexionCibleRoutage() {
+    public ToStringConnexionSaisie showConnexionSaisie() {
         this.sendData = false;
         this.setVisible(true);
         return this.infoToString;
@@ -47,9 +47,7 @@ public class ConnexionCibleRoutage extends JDialog {
         panSelection.setBorder(BorderFactory.createTitledBorder("Identifiant "));
         selection = new JComboBox();
         selection.addItem("");
-        selection.addItem("Membre du departement \"Prospection\"");
-        selection.addItem("Directeur de la strategie");
-        selection.addItem("Responsable du routage");
+        selection.addItem("Assistants de saisie");
         selectionLabel = new JLabel("Vous etes : ");
         panSelection.add(selectionLabel);
         panSelection.add(selection);
@@ -75,8 +73,7 @@ public class ConnexionCibleRoutage extends JDialog {
 
         okBouton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                infoToString = new ToStringConnexionCibleRoutage((String) selection.getSelectedItem(), mdp.getText(),
-                        fen, b);
+                infoToString = new ToStringConnexionSaisie((String) selection.getSelectedItem(), mdp.getText(), fen, b);
                 setVisible(false);
             }
         });

@@ -57,9 +57,8 @@ public class IndividuMAJ extends JDialog {
         } else {
             individu.addItem("");
             for (int i = 0; i < b.getListeIndividus().length; i++) {
-                individu.addItem(
-                        "individu : " + b.getListeIndividus()[i].getNom() + " " + b.getListeIndividus()[i].getPrenom()
-                                + " ne(e) le " + b.getListeIndividus()[i].getDateNaissance());
+                individu.addItem("individu : " + b.getListeIndividus()[i].getNom() + " "
+                        + b.getListeIndividus()[i].getPrenom() + " ne(e) le " + b.getListeIndividus()[i].getDate());
             }
         }
 
@@ -232,4 +231,5 @@ public class IndividuMAJ extends JDialog {
         this.getContentPane().add(content, BorderLayout.CENTER);
         this.getContentPane().add(control, BorderLayout.SOUTH);
     }
+
 }

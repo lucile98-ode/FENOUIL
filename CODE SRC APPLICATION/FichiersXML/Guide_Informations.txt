@@ -1,4 +1,4 @@
 Concernant l'envoi des fichiers XML :
 
-Les fichiers seront stockés dans le dossier "FichiersXML".
+Les fichiers seront stockés dans le dossier "FichiersXML". 
 Si ce fichier n'existe pas, il faut le creer (pour éviter les erreurs dans le code)

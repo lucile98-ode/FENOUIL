@@ -5,15 +5,15 @@ public class Individu {
     private String nom;
     private String prenom;
     private int age;
-    private DateNaissance date;
+    private Date date;
     private String categorieSocioProfessionnelle;
     private Adresse adresse;
     private String numeroTelephone;
     private String adresseMail;
     private String caracteristiqueCommerciale;
 
-    public Individu(String nom, String prenom, DateNaissance date, String categorieSocioProfessionnelle,
-            Adresse adresse, String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
+    public Individu(String nom, String prenom, Date date, String categorieSocioProfessionnelle, Adresse adresse,
+            String numeroTelephone, String adresseMail, String caracteristiqueCommerciale) {
         this.nom = nom;
         this.prenom = prenom;
         this.date = date;
@@ -50,7 +50,7 @@ public class Individu {
         return age + "";
     }
 
-    public String getDateNaissance() {
+    public String getDate() {
         return date.getJour() + "/" + date.getMois() + "/" + date.getAnnee();
     }
 
@@ -115,4 +115,5 @@ public class Individu {
     public void setVilleAdresse(String newVille) {
         this.adresse.setVille(newVille);
     }
+
 }

@@ -108,4 +108,5 @@ public class CibleRoutageValidation extends JDialog {
         this.getContentPane().add(content, BorderLayout.CENTER);
         this.getContentPane().add(control, BorderLayout.SOUTH);
     }
+
 }
