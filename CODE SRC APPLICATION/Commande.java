@@ -5,18 +5,22 @@ public class Commande {
     private Reglement reglement;
     private float montant;
     private String numeroCommande;
+    private boolean anomalie;
+    private String[] listeTypesAnomalie = new String[0];
 
     public Commande(Individu individu, Article[] listeArticlesCommande, Reglement reglement, float montant,
-            String numeroCommande) {
+            String numeroCommande, boolean anomalie, String[] listeTypesAnomalie) {
         this.individu = individu;
         this.listeArticlesCommande = listeArticlesCommande;
         this.reglement = reglement;
         this.montant = montant;
         this.numeroCommande = numeroCommande;
+        this.anomalie = anomalie;
+        this.listeTypesAnomalie = listeTypesAnomalie;
     }
 
     public Commande() {
-
+        this.anomalie = false;
     }
 
     // GETTERS
@@ -40,6 +44,14 @@ public class Commande {
         return numeroCommande;
     }
 
+    public boolean getAnomalie() {
+        return anomalie;
+    }
+
+    public String[] getTypesAnomalie() {
+        return listeTypesAnomalie;
+    }
+
     // SETTERS
     public void setIndividu(Individu individu) {
         this.individu = individu;
@@ -61,6 +73,10 @@ public class Commande {
         this.numeroCommande = numeroCommande;
     }
 
+    public void setAnomalie(boolean aAnomalie) {
+        this.anomalie = aAnomalie;
+    }
+
     // ADDERS
     public int addArticle(Article article) {
 
@@ -72,6 +88,19 @@ public class Commande {
         }
         newList[newList.length - 1] = c;
         listeArticlesCommande = newList;
+        return 0;
+    }
+
+    public int addTypesAnomalie(String typeAnomalie) {
+
+        String a = typeAnomalie;
+
+        String[] newList = new String[listeTypesAnomalie.length + 1];
+        for (int i = 0; i < listeTypesAnomalie.length; i++) {
+            newList[i] = listeTypesAnomalie[i];
+        }
+        newList[newList.length - 1] = a;
+        listeTypesAnomalie = newList;
         return 0;
     }
 
@@ -136,6 +165,13 @@ public class Commande {
         s += "Montant : " + getMontant() + " euros\n";
         s += "Numero de cheque : " + getReglement().getNumeroCheque() + "\n";
         s += "Banque : " + getReglement().getNomBanque() + "\n";
+        s += "Anomalie ? : " + getAnomalie() + "\n";
+        for (int i = 0; i < getTypesAnomalie().length - 1; i++) {
+            s += getTypesAnomalie()[i] + " - ";
+        }
+        for (int i = getTypesAnomalie().length - 1; i == getTypesAnomalie().length - 1; i++) {
+            s += getTypesAnomalie()[i];
+        }
 
         return s;
     }

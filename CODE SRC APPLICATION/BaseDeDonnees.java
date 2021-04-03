@@ -166,9 +166,10 @@ public class BaseDeDonnees {
     }
 
     public int addCommande(Individu individu, Article[] listeArticlesCommande, Reglement reglement, float montant,
-            String numeroCommande) {
+            String numeroCommande, boolean anomalie, String[] listeAnomalies) {
 
-        Commande commande = new Commande(individu, listeArticlesCommande, reglement, montant, numeroCommande);
+        Commande commande = new Commande(individu, listeArticlesCommande, reglement, montant, numeroCommande, anomalie,
+                listeAnomalies);
 
         Commande[] newList = new Commande[listeCommandes.length + 1];
         for (int i = 0; i < listeCommandes.length; i++) {

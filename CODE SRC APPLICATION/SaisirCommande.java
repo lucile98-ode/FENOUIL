@@ -16,10 +16,10 @@ import javax.swing.JSpinner;
 public class SaisirCommande extends JDialog {
     private ToStringSaisirCommande infoToString = new ToStringSaisirCommande();
     private boolean sendData;
-    private JLabel infoLabel, specificitesLabel, coordonneesLabel, articleLabel, quantiteLabel;
-    private JComboBox categorieSocioProfessionnelle, article;
+    private JLabel infoLabel, specificitesLabel, coordonneesLabel, articleLabel, quantiteLabel, anomalieLabel;
+    private JComboBox categorieSocioProfessionnelle, article, anomalie;
     private JTextField nom, prenom, adresseRue, ville, numeroTel, email, numCarte, nomBanque, numCheque;
-    private JSpinner dateJour, dateMois, dateAnnee, adresseNumero, departement, quantite;
+    private JSpinner dateJour, dateMois, dateAnnee, adresseNumero, departement, quantite, montant;
 
     BaseDeDonnees b;
     String etat, typeCommande;
@@ -40,7 +40,7 @@ public class SaisirCommande extends JDialog {
         } else if (this.etat == "commande") {
             this.setSize(700, 150);
         } else if (this.etat == "payer") {
-            this.setSize(700, 150);
+            this.setSize(700, 300);
         } else if (this.etat == "confirmation") {
             this.setSize(350, 650);
         }
@@ -247,10 +247,10 @@ public class SaisirCommande extends JDialog {
                 content.add(panInformation);
 
             } else if (typeCommande == "CHEQUE") {
-                // Date Carte Bancaire
+                // Cheque
                 JPanel panInformation = new JPanel();
                 panInformation.setBackground(Color.white);
-                panInformation.setPreferredSize(new Dimension(650, 60));
+                panInformation.setPreferredSize(new Dimension(650, 120));
                 panInformation.setBorder(BorderFactory.createTitledBorder("Paiement par cheque"));
 
                 numCheque = new JTextField();
@@ -265,9 +265,29 @@ public class SaisirCommande extends JDialog {
                 panInformation.add(infoLabel);
                 panInformation.add(nomBanque);
 
+                montant = new JSpinner();
+                montant.setValue(0);
+                montant.setPreferredSize(new Dimension(80, 30));
+                infoLabel = new JLabel("          Montant du cheque : ");
+                panInformation.add(infoLabel);
+                panInformation.add(montant);
+
+                // Specifications
+                JPanel panAnomalie = new JPanel();
+                panAnomalie.setBackground(Color.white);
+                panAnomalie.setPreferredSize(new Dimension(200, 60));
+                panAnomalie.setBorder(BorderFactory.createTitledBorder("Anomalie"));
+                anomalieLabel = new JLabel("Cheque signe ?");
+                anomalie = new JComboBox();
+                anomalie.addItem("oui");
+                anomalie.addItem("non");
+                panAnomalie.add(anomalieLabel);
+                panAnomalie.add(anomalie);
+
                 // ENSEMBLE
                 content.setBackground(Color.white);
                 content.add(panInformation);
+                content.add(panAnomalie);
             }
 
         } else if (etat == "confirmation") {
@@ -409,7 +429,7 @@ public class SaisirCommande extends JDialog {
                         cmd.setNumeroCommande(numeroDeLaCommande);
 
                         b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
-                                cmd.getNumeroCommande());
+                                cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
 
                         setVisible(false);
 
@@ -417,8 +437,10 @@ public class SaisirCommande extends JDialog {
                         recapCommande.setVisible(true);
 
                     } else if (typeCommande == "CHEQUE") {
+
                         String numeroDuCheque = (String) numCheque.getText();
                         String nomDeLaBanque = (String) nomBanque.getText();
+                        int montantPaye = (int) montant.getValue();
 
                         reg.setNumeroCheque(numeroDuCheque);
                         reg.setNomBanque(nomDeLaBanque);
@@ -428,8 +450,22 @@ public class SaisirCommande extends JDialog {
                         String numeroDeLaCommande = java.time.LocalDate.now() + "/" + java.time.LocalTime.now();
                         cmd.setNumeroCommande(numeroDeLaCommande);
 
+                        if (montantPaye != cmd.getMontant()) {
+                            cmd.setAnomalie(true);
+                            cmd.addTypesAnomalie("Erreur sur le montant");
+                        } else {
+                            cmd.addTypesAnomalie("");
+                        }
+
+                        if (((String) anomalie.getSelectedItem()) == "non") {
+                            cmd.setAnomalie(true);
+                            cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+                        } else {
+                            cmd.addTypesAnomalie("");
+                        }
+
                         b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
-                                cmd.getNumeroCommande());
+                                cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
 
                         setVisible(false);
 
