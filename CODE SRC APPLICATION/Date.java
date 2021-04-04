@@ -9,6 +9,11 @@ public class Date {
         this.annee = annee;
     }
 
+    public Date(int mois, int annee) {
+        this.mois = mois;
+        this.annee = annee;
+    }
+
     public int getJour() {
         return jour;
     }
@@ -27,4 +32,9 @@ public class Date {
         return s;
     }
 
+    public String toStringDateCB() {
+        String s = "";
+        s += getMois() + " / " + getAnnee();
+        return s;
+    }
 }

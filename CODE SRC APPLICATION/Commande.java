@@ -132,7 +132,7 @@ public class Commande {
         s += "Reglement\n\n";
         s += "Montant : " + getMontant() + " euros\n";
         s += "Numero de CB : " + getReglement().getNumeroCarteBanquaire() + "\n";
-        s += "Date d'expiration de CB : " + getReglement().getDateExpiration().toStringDate() + "\n";
+        s += "Date d'expiration de CB : " + getReglement().getDateExpiration().toStringDateCB() + "\n";
 
         return s;
     }

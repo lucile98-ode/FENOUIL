@@ -173,6 +173,101 @@ public class Fenetre extends JFrame {
             };
             this.getContentPane().add(new JScrollPane(tableau));
 
+        } else if (cible == "liste commande valide") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeCommandeValidees().length][5];
+
+            for (int i = 0; i < b.getListeCommandeValidees().length; i++) {
+                data[i][0] = b.getListeCommandeValidees()[i].getNumeroCommande();
+                data[i][1] = b.getListeCommandeValidees()[i].getIndividu().getNom() + " "
+                        + b.getListeCommandeValidees()[i].getIndividu().getPrenom();
+                data[i][2] = b.getListeCommandeValidees()[i].getMontant() + " euro(s)";
+                String s = "";
+                for (int j = 0; j < b.getListeCommandeValidees()[i].getListeArticle().length; j++) {
+                    s += b.getListeCommandeValidees()[i].getListeArticle()[j].getDesignation() + " ("
+                            + b.getListeCommandeValidees()[i].getListeArticle()[j].getQuantite() + ") ";
+                }
+                data[i][3] = s;
+                data[i][4] = b.getListeCommandeValidees()[i].getReglement().getType();
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero", "Client", "Montant paye", "Article(s) commande(s)", "Paiement par" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
+        } else if (cible == "liste commande") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeCommande().length][7];
+
+            for (int i = 0; i < b.getListeCommande().length; i++) {
+                data[i][0] = b.getListeCommande()[i].getNumeroCommande();
+                data[i][1] = b.getListeCommande()[i].getIndividu().getNom() + " "
+                        + b.getListeCommande()[i].getIndividu().getPrenom();
+                data[i][2] = b.getListeCommande()[i].getMontant() + " euro(s)";
+                String s = "";
+                for (int j = 0; j < b.getListeCommande()[i].getListeArticle().length; j++) {
+                    s += b.getListeCommande()[i].getListeArticle()[j].getDesignation() + " ("
+                            + b.getListeCommande()[i].getListeArticle()[j].getQuantite() + ") ";
+                }
+                data[i][3] = s;
+                data[i][4] = b.getListeCommande()[i].getReglement().getType();
+                data[i][5] = b.getListeCommande()[i].getAnomalie();
+                String ss = "";
+                for (int j = 0; j < b.getListeCommande()[i].getTypesAnomalie().length; j++) {
+                    ss += b.getListeCommande()[i].getTypesAnomalie()[j] + " ";
+                }
+                data[i][6] = ss;
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero", "Client", "Montant paye", "Article(s) commande(s)", "Paiement par",
+                    "Anomalie ?", "Type(s) d'anomalie" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
+        } else if (cible == "liste commande invalide") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeCommandeInvalides().length][7];
+
+            for (int i = 0; i < b.getListeCommandeInvalides().length; i++) {
+                data[i][0] = b.getListeCommandeInvalides()[i].getNumeroCommande();
+                data[i][1] = b.getListeCommandeInvalides()[i].getIndividu().getNom() + " "
+                        + b.getListeCommandeInvalides()[i].getIndividu().getPrenom();
+                data[i][2] = b.getListeCommandeInvalides()[i].getMontant() + " euro(s)";
+                String s = "";
+                for (int j = 0; j < b.getListeCommandeInvalides()[i].getListeArticle().length; j++) {
+                    s += b.getListeCommandeInvalides()[i].getListeArticle()[j].getDesignation() + " ("
+                            + b.getListeCommandeInvalides()[i].getListeArticle()[j].getQuantite() + ") ";
+                }
+                data[i][3] = s;
+                data[i][4] = b.getListeCommandeInvalides()[i].getReglement().getType();
+                data[i][5] = b.getListeCommandeInvalides()[i].getAnomalie();
+                String ss = "";
+                for (int j = 0; j < b.getListeCommandeInvalides()[i].getTypesAnomalie().length; j++) {
+                    ss += b.getListeCommandeInvalides()[i].getTypesAnomalie()[j] + " ";
+                }
+                data[i][6] = ss;
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero", "Client", "Montant paye", "Article(s) commande(s)", "Paiement par",
+                    "Anomalie ?", "Type(s) d'anomalie" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
         }
 
     }

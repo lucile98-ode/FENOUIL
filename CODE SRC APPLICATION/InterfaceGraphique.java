@@ -635,7 +635,7 @@ public class InterfaceGraphique {
         Texte texte1 = new Texte("Saisie des commandes", 210, 120, 1000, 100, 50, "Cambria");
         fen.add(texte1);
 
-        Bouton bouton1 = new Bouton("Retour", 250, 600, 200, 30);
+        Bouton bouton1 = new Bouton("Retour", 400, 600, 200, 30);
         fen.panel.add(bouton1);
         fen.setContentPane(fen.panel);
         bouton1.addActionListener(e -> {
@@ -643,7 +643,7 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton2 = new Bouton("<html><center>Saisie des commandes (envoyees par courrier)", 100, 350, 200, 75);
+        Bouton bouton2 = new Bouton("<html><center>Saisie des commandes (recues par courrier)", 250, 350, 200, 75);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
@@ -651,149 +651,103 @@ public class InterfaceGraphique {
                 Commande cmd = new Commande();
                 cmd.setMontant(0);
                 Reglement reg = new Reglement();
-                SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "individu", "CHEQUE", cmd, reg,
-                        b);
+                SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "client", "CHEQUE", cmd, reg, b);
                 ToStringSaisirCommande infoToString = sc.showSaisirCommande();
             }
 
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Valider des commandes (envoyees sur internet)", 400, 350, 200, 75);
+        Bouton bouton3 = new Bouton("<html><center>Consulter le details des commandes", 550, 350, 200, 75);
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // IndividuCreation ic = new IndividuCreation(null, "Creation d'un individu",
-                // true, b);
-                // ToStringIndividuCreation infoToString = ic.showIndividuCreation();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
+                DetailsCommande dc = new DetailsCommande(null, "Selectionner la commande pour consulter ses details",
+                        true, b);
+                ToStringDetailsCommande infoToString = dc.showDetailsCommande();
             }
         });
 
-        Bouton bouton4 = new Bouton("<html><center>Liste des commandes", 700, 350, 200, 75);
+        Bouton bouton4 = new Bouton("<html><center>Liste de toutes les commandes", 100, 450, 200, 75);
+        Bouton bouton5 = new Bouton("<html><center>Liste des commandes valides", 400, 450, 200, 75);
+        Bouton bouton6 = new Bouton("<html><center>Liste des commandes invalides", 700, 450, 200, 75);
+
         fen.panel.add(bouton4);
         fen.setContentPane(fen.panel);
         bouton4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // IndividuCreation ic = new IndividuCreation(null, "Creation d'un individu",
-                // true, b);
-                // ToStringIndividuCreation infoToString = ic.showIndividuCreation();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
+                Fenetre fenListedesCommandes = new Fenetre("Liste des commandes", "liste commande", b);
+
+                fenListedesCommandes.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesCommandes.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesCommandes.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesCommandes.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesCommandes.dispose();
+                });
+                bouton5.addActionListener(ev -> {
+                    fenListedesCommandes.dispose();
+                });
             }
         });
 
-        // Bouton bouton4 = new Bouton("<html><center>Mettre a jour un article", 400,
-        // 300, 200, 75);
-        // fen.panel.add(bouton4);
-        // fen.setContentPane(fen.panel);
-        // bouton4.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // fen.dispose();
-        // ModificationsArticle(b);
-        // }
-        // });
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesCommandesValides = new Fenetre("Liste des commandes valides",
+                        "liste commande valide", b);
 
-        // Bouton bouton5 = new Bouton("<html><center>Mettre a jour un individu", 400,
-        // 450, 200, 75);
-        // fen.panel.add(bouton5);
-        // fen.setContentPane(fen.panel);
-        // bouton5.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // fen.dispose();
-        // ModificationsIndividu(b);
-        // }
-        // });
+                fenListedesCommandesValides.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesCommandesValides.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesCommandesValides.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesCommandesValides.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesCommandesValides.dispose();
+                });
+                bouton6.addActionListener(ev -> {
+                    fenListedesCommandesValides.dispose();
+                });
+            }
+        });
 
-        // Bouton bouton8 = new Bouton("<html><center>Ajouter une categorie socio
-        // professionnelle", 550, 600, 200, 30);
-        // fen.panel.add(bouton8);
-        // fen.setContentPane(fen.panel);
-        // bouton8.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // CategorieSocioProfessionnelleCreation cspc = new
-        // CategorieSocioProfessionnelleCreation(null,
-        // "Creer une categorie socio professionnelle", true, b);
-        // ToStringCategorieSocioProfessionnelle infoToString =
-        // cspc.showCategorieSocioProfessionnelleCreation();
-        // JOptionPane jop = new JOptionPane();
-        // jop.showMessageDialog(null, infoToString.toString(), "Creer une categorie
-        // socio professionnelle",
-        // JOptionPane.INFORMATION_MESSAGE);
-        // }
-        // });
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesCommandesInvalides = new Fenetre("Liste des commandes en attentes",
+                        "liste commande invalide", b);
 
-        // Bouton bouton6 = new Bouton("<html><center>Liste des individus", 700, 450,
-        // 200, 75);
-        // Bouton bouton7 = new Bouton("<html><center>Liste des articles", 700, 300,
-        // 200, 75);
-
-        // fen.panel.add(bouton6);
-        // fen.setContentPane(fen.panel);
-        // bouton6.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // Fenetre fenListedesIndividus = new Fenetre("Liste des individus", "liste
-        // individu", b);
-        // fenListedesIndividus.setVisible(true);
-        // bouton1.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton2.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton3.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton4.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton5.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton7.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // bouton8.addActionListener(ev -> {
-        // fenListedesIndividus.dispose();
-        // });
-        // }
-        // });
-
-        // fen.panel.add(bouton7);
-        // fen.setContentPane(fen.panel);
-        // bouton7.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // Fenetre fenListedesArticles = new Fenetre("Liste des articles", "liste
-        // article", b);
-        // fenListedesArticles.setVisible(true);
-        // bouton1.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton2.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton3.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton4.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton5.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton6.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // bouton8.addActionListener(ev -> {
-        // fenListedesArticles.dispose();
-        // });
-        // }
-        // });
+                fenListedesCommandesInvalides.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesCommandesInvalides.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesCommandesInvalides.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesCommandesInvalides.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesCommandesInvalides.dispose();
+                });
+                bouton5.addActionListener(ev -> {
+                    fenListedesCommandesInvalides.dispose();
+                });
+            }
+        });
 
     }
 

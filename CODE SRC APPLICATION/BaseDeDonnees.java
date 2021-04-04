@@ -12,7 +12,7 @@ public class BaseDeDonnees {
 
     private Commande[] listeCommandes = new Commande[0];
     private Commande[] listeCommandesValidees = new Commande[0];
-    private Commande[] listeCommandesEnCours = new Commande[0];
+    private Commande[] listeCommandesInvalides = new Commande[0];
 
     public BaseDeDonnees() {
 
@@ -55,8 +55,8 @@ public class BaseDeDonnees {
         return listeCommandesValidees;
     }
 
-    public Commande[] getListeCommandeEnCours() {
-        return listeCommandesEnCours;
+    public Commande[] getListeCommandeInvalides() {
+        return listeCommandesInvalides;
     }
 
     // POUR UN DEBUG
@@ -142,6 +142,17 @@ public class BaseDeDonnees {
         return 0;
     }
 
+    public int addArticle(Article art) {
+        Article article = art;
+        Article[] newList = new Article[listeArticle.length + 1];
+        for (int i = 0; i < listeArticle.length; i++) {
+            newList[i] = listeArticle[i];
+        }
+        newList[newList.length - 1] = article;
+        listeArticle = newList;
+        return 0;
+    }
+
     public int addCategorieSocioProfessionnelle(String Categorie) {
         CategorieSocioProfessionnelle c = new CategorieSocioProfessionnelle(Categorie);
         CategorieSocioProfessionnelle[] newList = new CategorieSocioProfessionnelle[listeCategorieSocioProfessionnelles.length
@@ -188,6 +199,17 @@ public class BaseDeDonnees {
         }
         newList[newList.length - 1] = c;
         listeCommandesValidees = newList;
+        return 0;
+    }
+
+    public int addCommandeInvalide(Commande c) {
+
+        Commande[] newList = new Commande[listeCommandesInvalides.length + 1];
+        for (int i = 0; i < listeCommandesInvalides.length; i++) {
+            newList[i] = listeCommandesInvalides[i];
+        }
+        newList[newList.length - 1] = c;
+        listeCommandesInvalides = newList;
         return 0;
     }
 
@@ -322,26 +344,26 @@ public class BaseDeDonnees {
         }
     }
 
-    public int delCommandeEnCours(Commande c) {
-        if (listeCommandesEnCours.length != 0) {
+    public int delCommandeInvalide(Commande c) {
+        if (listeCommandesInvalides.length != 0) {
             boolean isFind = false;
-            for (int i = 0; i < listeCommandesEnCours.length; i++) {
-                if (c.equals(listeCommandesEnCours[i])) {
+            for (int i = 0; i < listeCommandesInvalides.length; i++) {
+                if (c.equals(listeCommandesInvalides[i])) {
                     isFind = true;
                     break;
                 }
             }
             if (isFind) {
-                Commande[] newlist = new Commande[(listeCommandesEnCours.length - 1)];
+                Commande[] newlist = new Commande[(listeCommandesInvalides.length - 1)];
                 int j = 0;
-                for (int i = 0; i < listeCommandesEnCours.length; i++) {
-                    if (c.equals(listeCommandesEnCours[i])) {
+                for (int i = 0; i < listeCommandesInvalides.length; i++) {
+                    if (c.equals(listeCommandesInvalides[i])) {
                         continue;
                     }
-                    newlist[j] = listeCommandesEnCours[i];
+                    newlist[j] = listeCommandesInvalides[i];
                     j++;
                 }
-                listeCommandesEnCours = newlist;
+                listeCommandesInvalides = newlist;
                 return 0;
             } else {
                 return -1;

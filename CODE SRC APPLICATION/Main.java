@@ -13,7 +13,7 @@ public class Main {
 
                 Individu individu2 = new Individu("Nom2", "Prenom2", new Date(1, 1, 1998), "cadre",
                                 new Adresse(56, "rue de la St Cloud", 91000, "Evry"), "0738102736",
-                                "individu2@exemple.fr", "client");
+                                "individu2@exemple.fr", "prospect");
 
                 b.addIndividu(individu1);
                 b.addIndividu(individu2);
@@ -31,10 +31,22 @@ public class Main {
 
                 // TESTS ADMINISTRATION DES DONNEES ARTICLES (BASE DE DONNEES REMPLIS POUR DES
                 // TESTS)
-                b.addArticle("012345", "pot de peinture", 30, 50);
+                b.addArticle("01234", "pot de peinture", 30, 50);
                 b.addArticle("94248", "carrelage", 100, 50);
-                b.addArticle("2343", "colle", 20, 50);
-                b.addArticle("8477493", "ciment", 40, 50);
+                b.addArticle("23439", "colle", 20, 50);
+                b.addArticle("84774", "ciment", 40, 50);
+
+                Article art1 = new Article("08264", "parpaing", 60, 10);
+                Article art2 = new Article("02935", "marteau", 15, 10);
+                Article art3 = new Article("92750", "pinceau", 5, 10);
+                Article art4 = new Article("54782", "seau", 10, 10);
+
+                b.addArticle(art1);
+                b.addArticle(art2);
+                b.addArticle(art3);
+                b.addArticle(art4);
+
+                Article[] listeArticle = { art1, art2, art3, art4 };
 
                 // TESTS ADMINISTRATION DES DONNEES CATEGORIE SOCIO PROFESSIONNELLE (BASE DE
                 // DONNEES REMPLIS POUR DES TESTS)
@@ -45,6 +57,19 @@ public class Main {
                 b.addCategorieSocioProfessionnelle("retraite");
                 b.addCategorieSocioProfessionnelle("employe");
                 b.addCategorieSocioProfessionnelle("autres");
+
+                // TESTS COMMANDE (BASE DE DONNEES REMPLIS POUR DES TESTS)
+                Commande cmd = new Commande();
+                cmd.setIndividu(individu1);
+                cmd.setListeArticle(listeArticle);
+                cmd.setReglement(new Reglement("CB", "0192746", new Date(12, 2031)));
+                cmd.setMontant(900);
+                cmd.setNumeroCommande(java.time.LocalDate.now() + "/" + java.time.LocalTime.now());
+                cmd.setAnomalie(false);
+                cmd.addTypesAnomalie("");
+
+                b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
+                                cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
 
                 // BASE DE DONNEES DES DEPARTEMENTS
                 // (https://www.regions-et-departements.fr/departements-francais)

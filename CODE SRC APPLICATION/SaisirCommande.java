@@ -12,13 +12,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
+import java.util.Calendar;
 
 public class SaisirCommande extends JDialog {
     private ToStringSaisirCommande infoToString = new ToStringSaisirCommande();
     private boolean sendData;
-    private JLabel infoLabel, specificitesLabel, coordonneesLabel, articleLabel, quantiteLabel, anomalieLabel;
-    private JComboBox categorieSocioProfessionnelle, article, anomalie;
-    private JTextField nom, prenom, adresseRue, ville, numeroTel, email, numCarte, nomBanque, numCheque;
+    private JLabel infoLabel, specificitesLabel, coordonneesLabel, articleLabel, quantiteLabel, anomalieLabel,
+            clientLabel;
+    private JComboBox categorieSocioProfessionnelle, article, anomalie, client;
+    private JTextField nom, prenom, adresseRue, ville, numeroTel, email, numCarte1, numCarte2, numCarte3, numCarte4,
+            crypto, nomBanque, numCheque;
     private JSpinner dateJour, dateMois, dateAnnee, adresseNumero, departement, quantite, montant;
 
     BaseDeDonnees b;
@@ -35,7 +38,9 @@ public class SaisirCommande extends JDialog {
         this.cmd = cmd;
         this.reg = reg;
 
-        if (this.etat == "individu") {
+        if (this.etat == "client") {
+            this.setSize(700, 160);
+        } else if (this.etat == "individu") {
             this.setSize(700, 320);
         } else if (this.etat == "commande") {
             this.setSize(700, 150);
@@ -61,7 +66,33 @@ public class SaisirCommande extends JDialog {
 
         JPanel content = new JPanel();
 
-        if (etat == "individu") {
+        if (etat == "client") {
+            // Specifications
+            JPanel panClient = new JPanel();
+            panClient.setBackground(Color.white);
+            panClient.setPreferredSize(new Dimension(625, 60));
+            panClient.setBorder(BorderFactory.createTitledBorder("Selectionner un client ou creer en un nouveau"));
+            clientLabel = new JLabel("* Selectionner :");
+            client = new JComboBox();
+            if (b.getListeIndividus().length == 0 || b.getListeIndividus() == null) {
+                client.addItem("Aucun client enregistre");
+            }
+            for (int i = 0; i < b.getListeIndividus().length; i++) {
+                if (b.getListeIndividus()[i].getCaracteristiqueCommerciale().equals("client")) {
+                    client.addItem(b.getListeIndividus()[i].getNom() + " " + b.getListeIndividus()[i].getPrenom()
+                            + " - " + b.getListeIndividus()[i].getDate() + " - "
+                            + b.getListeIndividus()[i].getAdresse());
+                }
+            }
+
+            panClient.add(clientLabel);
+            panClient.add(client);
+
+            // ENSEMBLE
+            content.setBackground(Color.white);
+            content.add(panClient);
+
+        } else if (etat == "individu") {
             // Information de l'individu
             JPanel panInformation = new JPanel();
             panInformation.setBackground(Color.white);
@@ -70,40 +101,40 @@ public class SaisirCommande extends JDialog {
 
             nom = new JTextField();
             nom.setPreferredSize(new Dimension(135, 25));
-            infoLabel = new JLabel("Nom :");
+            infoLabel = new JLabel("* Nom :");
             panInformation.add(infoLabel);
             panInformation.add(nom);
 
             prenom = new JTextField();
             prenom.setPreferredSize(new Dimension(135, 25));
-            infoLabel = new JLabel("Prenom :");
+            infoLabel = new JLabel("* Prenom :");
             panInformation.add(infoLabel);
             panInformation.add(prenom);
 
             numeroTel = new JTextField();
             numeroTel.setPreferredSize(new Dimension(120, 25));
-            infoLabel = new JLabel("Telephone :");
+            infoLabel = new JLabel("* Telephone :");
             panInformation.add(infoLabel);
             panInformation.add(numeroTel);
 
             dateJour = new JSpinner();
             dateJour.setValue(01);
             dateJour.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("Jour : ");
+            infoLabel = new JLabel("* Jour : ");
             panInformation.add(infoLabel);
             panInformation.add(dateJour);
 
             dateMois = new JSpinner();
             dateMois.setValue(01);
             dateMois.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("Mois : ");
+            infoLabel = new JLabel("* Mois : ");
             panInformation.add(infoLabel);
             panInformation.add(dateMois);
 
             dateAnnee = new JSpinner();
             dateAnnee.setValue(1990);
             dateAnnee.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("Annee : ");
+            infoLabel = new JLabel("* Annee : ");
             panInformation.add(infoLabel);
             panInformation.add(dateAnnee);
 
@@ -117,7 +148,7 @@ public class SaisirCommande extends JDialog {
             JPanel panCoordonnees = new JPanel();
             panCoordonnees.setBackground(Color.white);
             panCoordonnees.setPreferredSize(new Dimension(625, 60));
-            panCoordonnees.setBorder(BorderFactory.createTitledBorder("Coordonnees"));
+            panCoordonnees.setBorder(BorderFactory.createTitledBorder("* Coordonnees"));
 
             adresseNumero = new JSpinner();
             adresseNumero.setValue(1);
@@ -150,7 +181,7 @@ public class SaisirCommande extends JDialog {
             panSpecifications.setBackground(Color.white);
             panSpecifications.setPreferredSize(new Dimension(625, 60));
             panSpecifications.setBorder(BorderFactory.createTitledBorder("Specificites"));
-            specificitesLabel = new JLabel("Categorie Socio-Professionnelle :");
+            specificitesLabel = new JLabel("* Categorie Socio-Professionnelle :");
             categorieSocioProfessionnelle = new JComboBox();
             if (b.getListeCategorieSocioProfessionnelles().length == 0
                     || b.getListeCategorieSocioProfessionnelles() == null) {
@@ -177,7 +208,7 @@ public class SaisirCommande extends JDialog {
             panArticle.setBackground(Color.white);
             panArticle.setPreferredSize(new Dimension(400, 60));
             panArticle.setBorder(BorderFactory.createTitledBorder("Ajouter un article a la commande"));
-            articleLabel = new JLabel("Article :");
+            articleLabel = new JLabel("* Article :");
             article = new JComboBox();
             if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
                 article.addItem("Aucun article enregistre");
@@ -198,7 +229,7 @@ public class SaisirCommande extends JDialog {
             quantite = new JSpinner();
             quantite.setValue(1);
             quantite.setPreferredSize(new Dimension(65, 30));
-            quantiteLabel = new JLabel("Quantite : ");
+            quantiteLabel = new JLabel("* Quantite : ");
             panQuantite.add(quantiteLabel);
             panQuantite.add(quantite);
 
@@ -213,38 +244,56 @@ public class SaisirCommande extends JDialog {
                 JPanel panInformation = new JPanel();
                 panInformation.setBackground(Color.white);
                 panInformation.setPreferredSize(new Dimension(650, 60));
-                panInformation.setBorder(BorderFactory.createTitledBorder("Date d'expiration de la carte bancaire"));
-
-                dateJour = new JSpinner();
-                dateJour.setValue(01);
-                dateJour.setPreferredSize(new Dimension(50, 30));
-                infoLabel = new JLabel("Jour : ");
-                panInformation.add(infoLabel);
-                panInformation.add(dateJour);
+                panInformation.setBorder(BorderFactory.createTitledBorder("* Date d'expiration de la carte bancaire"));
 
                 dateMois = new JSpinner();
-                dateMois.setValue(01);
+                dateMois.setValue(12);
                 dateMois.setPreferredSize(new Dimension(50, 30));
                 infoLabel = new JLabel("Mois : ");
                 panInformation.add(infoLabel);
                 panInformation.add(dateMois);
 
                 dateAnnee = new JSpinner();
-                dateAnnee.setValue(1990);
+                dateAnnee.setValue(2030);
                 dateAnnee.setPreferredSize(new Dimension(50, 30));
                 infoLabel = new JLabel("Annee : ");
                 panInformation.add(infoLabel);
                 panInformation.add(dateAnnee);
 
-                numCarte = new JTextField();
-                numCarte.setPreferredSize(new Dimension(115, 25));
-                infoLabel = new JLabel("Numero de la carte bancaire");
-                panInformation.add(infoLabel);
-                panInformation.add(numCarte);
+                JPanel panNum = new JPanel();
+                panNum.setBackground(Color.white);
+                panNum.setPreferredSize(new Dimension(650, 60));
+                panNum.setBorder(BorderFactory.createTitledBorder(
+                        "Numero de CB (16 chiffres)   -   Crytogramme visuel (3 derniers chiffres)        "));
+
+                numCarte1 = new JTextField();
+                numCarte1.setPreferredSize(new Dimension(35, 25));
+                infoLabel = new JLabel("* Numero CB (16 chiffres)");
+                panNum.add(infoLabel);
+                panNum.add(numCarte1);
+
+                numCarte2 = new JTextField();
+                numCarte2.setPreferredSize(new Dimension(35, 25));
+                panNum.add(numCarte2);
+
+                numCarte3 = new JTextField();
+                numCarte3.setPreferredSize(new Dimension(35, 25));
+                panNum.add(numCarte3);
+
+                numCarte4 = new JTextField();
+                numCarte4.setPreferredSize(new Dimension(35, 25));
+                panNum.add(numCarte4);
+
+                crypto = new JTextField();
+                crypto.setPreferredSize(new Dimension(30, 25));
+                infoLabel = new JLabel("* Crytogramme visuel (3 chiffres)");
+                panNum.add(infoLabel);
+                panNum.add(crypto);
 
                 // ENSEMBLE
                 content.setBackground(Color.white);
                 content.add(panInformation);
+                content.add(panNum);
 
             } else if (typeCommande == "CHEQUE") {
                 // Cheque
@@ -255,20 +304,20 @@ public class SaisirCommande extends JDialog {
 
                 numCheque = new JTextField();
                 numCheque.setPreferredSize(new Dimension(115, 25));
-                infoLabel = new JLabel("Numero de cheque");
+                infoLabel = new JLabel("* Numero de cheque");
                 panInformation.add(infoLabel);
                 panInformation.add(numCheque);
 
                 nomBanque = new JTextField();
                 nomBanque.setPreferredSize(new Dimension(115, 25));
-                infoLabel = new JLabel("Nom de la banque");
+                infoLabel = new JLabel("* Nom de la banque");
                 panInformation.add(infoLabel);
                 panInformation.add(nomBanque);
 
                 montant = new JSpinner();
                 montant.setValue(0);
                 montant.setPreferredSize(new Dimension(80, 30));
-                infoLabel = new JLabel("          Montant du cheque : ");
+                infoLabel = new JLabel("        * Montant du cheque : ");
                 panInformation.add(infoLabel);
                 panInformation.add(montant);
 
@@ -277,7 +326,7 @@ public class SaisirCommande extends JDialog {
                 panAnomalie.setBackground(Color.white);
                 panAnomalie.setPreferredSize(new Dimension(200, 60));
                 panAnomalie.setBorder(BorderFactory.createTitledBorder("Anomalie"));
-                anomalieLabel = new JLabel("Cheque signe ?");
+                anomalieLabel = new JLabel("* Cheque signe ?");
                 anomalie = new JComboBox();
                 anomalie.addItem("oui");
                 anomalie.addItem("non");
@@ -302,7 +351,58 @@ public class SaisirCommande extends JDialog {
             content.add(panInformation);
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         JPanel control = new JPanel();
+
+        // IDENTIFICATION INDIVIDU BD
+        if (etat == "client") {
+            JButton okBouton = new JButton("OK");
+            okBouton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    int indexIndividu = (int) client.getSelectedIndex();
+                    cmd.setIndividu(b.getListeIndividus()[indexIndividu]);
+
+                    setVisible(false);
+                    if (typeCommande == "CB") {
+                        SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "commande", "CB", cmd,
+                                reg, b);
+                        ToStringSaisirCommande infoToString = sc.showSaisirCommande();
+                    } else if (typeCommande == "CHEQUE") {
+                        SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "commande", "CHEQUE", cmd,
+                                reg, b);
+                        ToStringSaisirCommande infoToString = sc.showSaisirCommande();
+                    }
+                }
+            });
+
+            JButton cancelBouton = new JButton("Annuler");
+            cancelBouton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    setVisible(false);
+                }
+            });
+
+            JButton newClient = new JButton("Creer un nouveau client");
+            newClient.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    setVisible(false);
+                    if (typeCommande == "CB") {
+                        SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "individu", "CB", cmd,
+                                reg, b);
+                        ToStringSaisirCommande infoToString = sc.showSaisirCommande();
+                    } else if (typeCommande == "CHEQUE") {
+                        SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "individu", "CHEQUE", cmd,
+                                reg, b);
+                        ToStringSaisirCommande infoToString = sc.showSaisirCommande();
+                    }
+                }
+            });
+
+            control.add(cancelBouton);
+            control.add(newClient);
+            control.add(okBouton);
+        }
 
         // IDENTIFICATION AVANT DE PASSER COMMANDE
         if (etat == "individu") {
@@ -415,21 +515,45 @@ public class SaisirCommande extends JDialog {
             confirmation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent arg0) {
                     if (typeCommande == "CB") {
-                        int jour = (int) dateJour.getValue();
                         int mois = (int) dateMois.getValue();
                         int annee = (int) dateAnnee.getValue();
-                        String numDeLaCarte = (String) numCarte.getText();
+                        String numDeLaCarte = (String) numCarte1.getText() + " " + (String) numCarte2.getText() + " "
+                                + (String) numCarte3.getText() + " " + (String) numCarte4.getText() + " - "
+                                + (String) crypto.getText();
 
                         reg.setNumeroCarteBanquaire(numDeLaCarte);
-                        reg.setDateExpirationCB(new Date(jour, mois, annee));
-                        reg.setType("Carte Banquaire");
+                        reg.setDateExpirationCB(new Date(mois, annee));
+                        reg.setType("CB");
                         cmd.setReglement(reg);
                         // Numero = date + heure
                         String numeroDeLaCommande = java.time.LocalDate.now() + "/" + java.time.LocalTime.now();
                         cmd.setNumeroCommande(numeroDeLaCommande);
 
+                        Calendar c = Calendar.getInstance();
+                        int year = c.get(Calendar.YEAR);
+                        int month = c.get(Calendar.MONTH);
+
+                        if (annee < year) {
+                            cmd.setAnomalie(true);
+                            cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+                        } else if (annee == year) {
+                            if (mois < month) {
+                                cmd.setAnomalie(true);
+                                cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+                            } else if (mois == month) {
+                                // si le carte expire ce mois ci
+                            }
+                        }
+
                         b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
                                 cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
+
+                        if (cmd.getAnomalie() == true) {
+                            b.addCommandeInvalide(cmd);
+                        } else {
+                            cmd.getIndividu().setCaracteristique("client");
+                            b.addCommandeValide(cmd);
+                        }
 
                         setVisible(false);
 
@@ -444,7 +568,7 @@ public class SaisirCommande extends JDialog {
 
                         reg.setNumeroCheque(numeroDuCheque);
                         reg.setNomBanque(nomDeLaBanque);
-                        reg.setType("Cheque");
+                        reg.setType("CHEQUE");
                         cmd.setReglement(reg);
                         // Numero = date + heure
                         String numeroDeLaCommande = java.time.LocalDate.now() + "/" + java.time.LocalTime.now();
@@ -466,6 +590,13 @@ public class SaisirCommande extends JDialog {
 
                         b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
                                 cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
+
+                        if (cmd.getAnomalie() == true) {
+                            b.addCommandeInvalide(cmd);
+                        } else if (cmd.getAnomalie() == false) {
+                            cmd.getIndividu().setCaracteristique("client");
+                            b.addCommandeValide(cmd);
+                        }
 
                         setVisible(false);
 
@@ -504,41 +635,6 @@ public class SaisirCommande extends JDialog {
             control.add(ajouterUnProduit);
             control.add(confirmation);
         }
-
-        // // RECAPITULATIF DE LA COMMANDE
-        // if (etat == "confirmation") {
-        // JButton confirmation = new JButton("Confimer la commande");
-        // confirmation.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-
-        // setVisible(false);
-
-        // }
-        // });
-
-        // // JButton ajouterUnProduit = new JButton("Ajouter un produit");
-        // // ajouterUnProduit.addActionListener(new ActionListener() {
-        // // public void actionPerformed(ActionEvent arg0) {
-        // // SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true,
-        // // "commande", cmd, reg, b);
-        // // ToStringSaisirCommande infoToString = sc.showSaisirCommande();
-
-        // // setVisible(false);
-        // // }
-        // // });
-
-        // JButton cancelBouton = new JButton("Annuler la commande en cours");
-        // cancelBouton.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-
-        // setVisible(false);
-        // }
-        // });
-
-        // control.add(confirmation);
-        // // control.add(ajouterUnProduit);
-        // control.add(cancelBouton);
-        // }
 
         this.getContentPane().add(content, BorderLayout.CENTER);
         this.getContentPane().add(control, BorderLayout.SOUTH);
