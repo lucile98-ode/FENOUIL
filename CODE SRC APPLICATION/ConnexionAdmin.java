@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ConnexionAdmin extends JDialog {
+
     private ToStringConnexionAdmin infoToString = new ToStringConnexionAdmin();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;
@@ -91,5 +92,4 @@ public class ConnexionAdmin extends JDialog {
         this.getContentPane().add(content, BorderLayout.CENTER);
         this.getContentPane().add(control, BorderLayout.SOUTH);
     }
-
 }

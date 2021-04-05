@@ -1,4 +1,5 @@
 public class CategorieSocioProfessionnelle {
+
     private String categorie;
 
     public CategorieSocioProfessionnelle(String categorie) {

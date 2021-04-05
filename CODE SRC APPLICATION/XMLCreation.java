@@ -18,7 +18,6 @@ public class XMLCreation {
         public static void CreerXML(BaseDeDonnees b) {
 
                 try {
-
                         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                         DocumentBuilder docBuilder = dbFactory.newDocumentBuilder();
 

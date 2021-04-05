@@ -1,4 +1,5 @@
 public class ToStringConnexionAdmin {
+
     private String selection, mdp;
     Fenetre fen;
     Mdp motDePasse = new Mdp();

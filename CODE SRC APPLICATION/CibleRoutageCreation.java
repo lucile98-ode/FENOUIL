@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CibleRoutageCreation extends JDialog {
+
     private ToStringCibleRoutage infoToString = new ToStringCibleRoutage();
     private boolean sendData;
     private JLabel titreLabel, selectionLabel, articleLabel, styleLabel, descriptionLabel, typeLabel;

@@ -1,4 +1,5 @@
 public class ToStringCategorieSocioProfessionnelle {
+
     private String categorie;
 
     public ToStringCategorieSocioProfessionnelle() {

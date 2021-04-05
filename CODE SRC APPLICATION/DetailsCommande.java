@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DetailsCommande extends JDialog {
+
     private ToStringDetailsCommande infoToString = new ToStringDetailsCommande();
     private boolean sendData;
     private JLabel commandeLabel;

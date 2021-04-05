@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
 public class IndividuCreation extends JDialog {
+
     private ToStringIndividuCreation infoToString = new ToStringIndividuCreation();
     private boolean sendData;
     private JLabel infoLabel, specificitesLabel, coordonneesLabel;

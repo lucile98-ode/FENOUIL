@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
 public class ArticleCreation extends JDialog {
+
     private ToStringCreationArticle infoToString = new ToStringCreationArticle();
     private boolean sendData;
     private JLabel numeroLabel, designationLabel, prixLabel, quantiteLabel;
