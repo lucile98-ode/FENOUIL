@@ -1,4 +1,5 @@
 public class DepartementResidence {
+
     private String numero;
     private String nom;
 

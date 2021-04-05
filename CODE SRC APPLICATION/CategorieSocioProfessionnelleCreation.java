@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CategorieSocioProfessionnelleCreation extends JDialog {
+
     private ToStringCategorieSocioProfessionnelle infoToString = new ToStringCategorieSocioProfessionnelle();
     private boolean sendData;
     private JLabel categorieLabel;

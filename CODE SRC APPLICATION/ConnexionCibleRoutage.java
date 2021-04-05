@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ConnexionCibleRoutage extends JDialog {
+
     private ToStringConnexionCibleRoutage infoToString = new ToStringConnexionCibleRoutage();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;

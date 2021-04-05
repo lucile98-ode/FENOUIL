@@ -1,4 +1,5 @@
 public class ToStringCibleRoutage {
+
     private String selection, titre, art1, art2, art3, art4, art5, description, style, type;
 
     public ToStringCibleRoutage() {

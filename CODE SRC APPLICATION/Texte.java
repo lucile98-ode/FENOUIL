@@ -2,6 +2,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class Texte extends JLabel {
+
     String texte;
     int position_x;
     int position_y;

@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ConnexionSaisie extends JDialog {
+
     private ToStringConnexionSaisie infoToString = new ToStringConnexionSaisie();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;

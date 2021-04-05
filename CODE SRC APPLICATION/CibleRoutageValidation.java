@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class CibleRoutageValidation extends JDialog {
+
     private ToStringValidationCibleRoutage infoToString = new ToStringValidationCibleRoutage();
     private boolean sendData;
     private JLabel cibleLabel;

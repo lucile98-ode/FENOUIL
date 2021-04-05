@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
 public class IndividuMAJ extends JDialog {
+
     private ToStringIndividuMAJ infoToString = new ToStringIndividuMAJ();
     private boolean sendData;
     private JLabel nomLabel, categorieLabel, adresseLabel, telephoneLabel, emailLabel, caracteristiqueLabel,

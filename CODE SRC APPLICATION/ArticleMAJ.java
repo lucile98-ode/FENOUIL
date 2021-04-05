@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 
 public class ArticleMAJ extends JDialog {
+
     private ToStringArticleMAJ infoToString = new ToStringArticleMAJ();
     private boolean sendData;
     private JLabel designationLabel, prixLabel, quantiteLabel, articleLabel;

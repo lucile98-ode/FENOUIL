@@ -174,6 +174,5 @@ public class Main {
                 b.addDepartementResidence("973", "Guyane");
                 b.addDepartementResidence("974", "La Reunion");
                 b.addDepartementResidence("976", "Mayotte");
-
         }
 }

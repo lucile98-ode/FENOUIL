@@ -1,4 +1,5 @@
 public class ToStringValidationCibleRoutage {
+
     private String cible;
 
     public ToStringValidationCibleRoutage() {

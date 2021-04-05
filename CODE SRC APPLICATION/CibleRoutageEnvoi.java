@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class CibleRoutageEnvoi extends JDialog {
+
     private ToStringEnvoiCibleRoutage infoToString = new ToStringEnvoiCibleRoutage();
     private boolean sendData;
     private JLabel cibleLabel;
