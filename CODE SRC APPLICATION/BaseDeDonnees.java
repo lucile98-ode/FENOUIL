@@ -81,6 +81,19 @@ public class BaseDeDonnees {
         return 0;
     }
 
+    public int addCibleRoutages(CibleRoutage cr) {
+
+        CibleRoutage c = cr;
+
+        CibleRoutage[] newList = new CibleRoutage[listeCibleRoutage.length + 1];
+        for (int i = 0; i < listeCibleRoutage.length; i++) {
+            newList[i] = listeCibleRoutage[i];
+        }
+        newList[newList.length - 1] = c;
+        listeCibleRoutage = newList;
+        return 0;
+    }
+
     public int addCibleRoutagesValide(CibleRoutage c) {
 
         CibleRoutage[] newList = new CibleRoutage[listeValide.length + 1];

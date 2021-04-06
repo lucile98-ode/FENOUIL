@@ -7,12 +7,12 @@ public class Main {
 
                 // TESTS ADMINISTRATION DES DONNEES INDIVIDUS (BASE DE DONNEES REMPLIS POUR DES
                 // TESTS)
-                Individu individu1 = new Individu("Nom1", "Prenom1", new Date(1, 1, 2000), "cadre",
+                Individu individu1 = new Individu("Nom1", "Prenom1", new Date(1, 1, 1982), "cadre",
                                 new Adresse(1, "avenue de la Republique", 75000, "Paris"), "0123456789",
                                 "individu@exemple.fr", "client");
 
-                Individu individu2 = new Individu("Nom2", "Prenom2", new Date(1, 1, 1998), "cadre",
-                                new Adresse(56, "rue de la St Cloud", 91000, "Evry"), "0738102736",
+                Individu individu2 = new Individu("Nom2", "Prenom2", new Date(1, 1, 1900), "cadre",
+                                new Adresse(56, "rue de la St Cloud", 97600, "Evry"), "0738102736",
                                 "individu2@exemple.fr", "prospect");
 
                 b.addIndividu(individu1);

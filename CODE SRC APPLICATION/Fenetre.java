@@ -279,10 +279,10 @@ public class Fenetre extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        Color couleur = new ColorUIResource(0, 0, 0);
-        panel.setBackground(couleur);
+        Color couleur = new ColorUIResource(255, 255, 255);
 
         JPanel panel = new JPanel();
+        panel.setBackground(couleur);
         if (type == "CB") {
             JTextArea labelArea = new JTextArea(cmd.toStringCommandeCB());
             panel.add(labelArea);
@@ -291,6 +291,45 @@ public class Fenetre extends JFrame {
             panel.add(labelArea);
         } else if (type == "CHEQUE") {
             JTextArea labelArea = new JTextArea(cmd.toStringCommandeCheque());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            labelArea.setEnabled(false);
+            panel.add(labelArea);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(0, 0, 350, 400);
+
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(350, 400));
+        contentPane.add(scrollPane);
+        this.setContentPane(contentPane);
+        this.pack();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
+
+    }
+
+    public Fenetre(String vFenetre, String type, CibleRoutage cr) {
+
+        this.setTitle(vFenetre);
+        this.setSize(300, 400);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        Color couleur = new ColorUIResource(255, 255, 255);
+
+        JPanel panel = new JPanel();
+        panel.setBackground(couleur);
+        if (type == "Papier" || type == "catalogue papier") {
+            JTextArea labelArea = new JTextArea(cr.toStringCibleRoutagePapier());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            labelArea.setEnabled(false);
+            panel.add(labelArea);
+        } else /* if (type == "Internet") */ {
+            JTextArea labelArea = new JTextArea(cr.toStringCibleRoutageInternet());
             panel.add(labelArea);
             labelArea.setForeground(Color.BLACK);
             labelArea.setEnabled(false);

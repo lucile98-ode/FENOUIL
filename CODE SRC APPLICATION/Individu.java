@@ -54,6 +54,10 @@ public class Individu {
         return date.getJour() + "/" + date.getMois() + "/" + date.getAnnee();
     }
 
+    public Date getDateDate() {
+        return this.date;
+    }
+
     public String getCategorieSocioProfessionnelle() {
         return categorieSocioProfessionnelle;
     }
@@ -61,6 +65,10 @@ public class Individu {
     public String getAdresse() {
         return adresse.getNumero() + " " + adresse.getRue() + " - " + adresse.getCodePostal() + ", "
                 + adresse.getVille();
+    }
+
+    public Adresse getAdresseAdresse() {
+        return this.adresse;
     }
 
     public String getAdresseCodePostal() {

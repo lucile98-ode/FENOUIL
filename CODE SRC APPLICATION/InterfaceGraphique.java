@@ -83,7 +83,7 @@ public class InterfaceGraphique {
     public static void CreationCibleDeRoutage(BaseDeDonnees b) {
 
         Fenetre fen = new Fenetre("Cible de routage", 150, 100, 100);
-        Texte texte1 = new Texte("Creation d'une cible de routage", 200, 100, 1000, 100, 50, "Cambria");
+        Texte texte1 = new Texte("Creation d'une cible de routage", 150, 100, 1000, 100, 50, "Cambria");
         fen.add(texte1);
 
         Bouton bouton1 = new Bouton("Retour", 400, 600, 200, 30);
@@ -94,37 +94,42 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton2 = new Bouton("<html><center>Creer une cible de routage Papier", 150, 450, 200, 75);
+        Bouton bouton2 = new Bouton("<html><center>Creer une cible de routage Papier", 50, 450, 200, 75);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                CibleRoutage cr = new CibleRoutage();
                 CibleRoutageCreation crc = new CibleRoutageCreation(null, "Creation cible de routage - Papier", true,
-                        "Papier", b);
+                        "Papier", "initialisation", b, cr);
                 ToStringCibleRoutage infoToString = crc.showCibleRoutage();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Creer une cible de routage Internet", 400, 450, 200, 75);
+        Bouton bouton3 = new Bouton("<html><center>Creer une cible de routage Internet", 275, 450, 200, 75);
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                CibleRoutage cr = new CibleRoutage();
                 CibleRoutageCreation crc = new CibleRoutageCreation(null, "Creation cible de routage - Internet", true,
-                        "Internet", b);
+                        "Internet", "initialisation", b, cr);
                 ToStringCibleRoutage infoToString = crc.showCibleRoutage();
-                // JOptionPane jop = new JOptionPane();
-                // jop.showMessageDialog(null, infoToString.toString(), "Création Cible de
-                // routage",
-                // JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
-        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage en attente de validation", 650, 450, 200,
+        Bouton bouton5 = new Bouton("<html><center>Consulter le details des cibles de routage", 750, 450, 200, 75);
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DetailsCibleRoutage dcr = new DetailsCibleRoutage(null,
+                        "Selectionner la cible de routage pour consulter ses details", true, b);
+                ToStringDetailsCibleRoutage infoToString = dcr.showDetailsCibleRoutage();
+            }
+        });
+
+        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage en attente de validation", 525, 450, 200,
                 75);
         fen.panel.add(bouton4);
         fen.setContentPane(fen.panel);
@@ -141,6 +146,9 @@ public class InterfaceGraphique {
             bouton3.addActionListener(ev -> {
                 fenCibleRoutageAValider.dispose();
             });
+            bouton5.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
         });
 
     }
@@ -148,7 +156,7 @@ public class InterfaceGraphique {
     public static void ValidationCibleDeRoutage(BaseDeDonnees b) {
 
         Fenetre fen = new Fenetre("Cible de routage", 150, 100, 100);
-        Texte texte1 = new Texte("Validation d'une cible de routage", 180, 100, 1000, 100, 50, "Cambria");
+        Texte texte1 = new Texte("Validation d'une cible de routage", 120, 100, 1000, 100, 50, "Cambria");
         fen.add(texte1);
 
         Bouton bouton1 = new Bouton("Retour", 400, 600, 200, 30);
@@ -159,7 +167,7 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton2 = new Bouton("<html><center>Valider une cible de routage", 150, 450, 200, 75);
+        Bouton bouton2 = new Bouton("<html><center>Valider une cible de routage", 100, 350, 200, 75);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
@@ -172,10 +180,33 @@ public class InterfaceGraphique {
             }
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Liste des cibles de routage en attente de validation", 400, 450, 200,
+        Bouton bouton5 = new Bouton("<html><center>Consulter le details des cibles de routage", 400, 350, 200, 75);
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DetailsCibleRoutage dcr = new DetailsCibleRoutage(null,
+                        "Selectionner la cible de routage pour consulter ses details", true, b);
+                ToStringDetailsCibleRoutage infoToString = dcr.showDetailsCibleRoutage();
+            }
+        });
+
+        Bouton bouton6 = new Bouton("<html><center>Consulter le details des cibles de routage validees", 700, 350, 200,
+                75);
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DetailsCibleRoutageValidee dcr = new DetailsCibleRoutageValidee(null,
+                        "Selectionner la cible de routage pour consulter ses details", true, b);
+                ToStringDetailsCibleRoutageValidee infoToString = dcr.showDetailsCibleRoutageValidee();
+            }
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Liste des cibles de routage en attente de validation", 250, 450, 200,
                 75);
 
-        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage validees", 650, 450, 200, 75);
+        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage validees", 550, 450, 200, 75);
 
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
@@ -190,6 +221,12 @@ public class InterfaceGraphique {
                 fenCibleRoutageAValider.dispose();
             });
             bouton4.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
+            bouton5.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
+            bouton6.addActionListener(ev -> {
                 fenCibleRoutageAValider.dispose();
             });
         });
@@ -207,6 +244,12 @@ public class InterfaceGraphique {
                 fenCibleRoutageAValider.dispose();
             });
             bouton2.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
+            bouton5.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
+            bouton6.addActionListener(ev -> {
                 fenCibleRoutageAValider.dispose();
             });
         });
@@ -227,7 +270,7 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton2 = new Bouton("<html><center>Envoi une cible de routage", 150, 450, 200, 75);
+        Bouton bouton2 = new Bouton("<html><center>Envoi une cible de routage", 100, 350, 200, 75);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
@@ -240,9 +283,33 @@ public class InterfaceGraphique {
             }
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Liste des cibles de routage validee en attente d'envoi", 400, 450,
+        Bouton bouton5 = new Bouton("<html><center>Consulter le details des cibles de routage validees", 400, 350, 200,
+                75);
+        fen.panel.add(bouton5);
+        fen.setContentPane(fen.panel);
+        bouton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DetailsCibleRoutageValidee dcr = new DetailsCibleRoutageValidee(null,
+                        "Selectionner la cible de routage pour consulter ses details", true, b);
+                ToStringDetailsCibleRoutageValidee infoToString = dcr.showDetailsCibleRoutageValidee();
+            }
+        });
+
+        Bouton bouton6 = new Bouton("<html><center>Consulter le details des cibles de routage envoyees", 700, 350, 200,
+                75);
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                DetailsCibleRoutageEnvoyee dcr = new DetailsCibleRoutageEnvoyee(null,
+                        "Selectionner la cible de routage pour consulter ses details", true, b);
+                ToStringDetailsCibleRoutageEnvoyee infoToString = dcr.showDetailsCibleRoutageEnvoyee();
+            }
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Liste des cibles de routage validee en attente d'envoi", 250, 450,
                 200, 75);
-        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage envoyees", 650, 450, 200, 75);
+        Bouton bouton4 = new Bouton("<html><center>Liste des cibles de routage envoyees", 550, 450, 200, 75);
 
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
@@ -259,6 +326,12 @@ public class InterfaceGraphique {
             bouton4.addActionListener(ev -> {
                 fenCibleRoutageAValider.dispose();
             });
+            bouton5.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
+            bouton6.addActionListener(ev -> {
+                fenCibleRoutageAValider.dispose();
+            });
         });
 
         fen.panel.add(bouton4);
@@ -273,6 +346,12 @@ public class InterfaceGraphique {
                 fenCibleRoutageEnvoye.dispose();
             });
             bouton3.addActionListener(ev -> {
+                fenCibleRoutageEnvoye.dispose();
+            });
+            bouton5.addActionListener(ev -> {
+                fenCibleRoutageEnvoye.dispose();
+            });
+            bouton6.addActionListener(ev -> {
                 fenCibleRoutageEnvoye.dispose();
             });
         });

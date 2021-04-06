@@ -41,7 +41,7 @@ public class CibleRoutageValidation extends JDialog {
         // Cible routage
         JPanel panCible = new JPanel();
         panCible.setBackground(Color.white);
-        panCible.setPreferredSize(new Dimension(800, 60));
+        panCible.setPreferredSize(new Dimension(870, 60));
         panCible.setBorder(BorderFactory.createTitledBorder("Selection d'une cible de routage"));
         cible = new JComboBox();
         if (b.getListeCibleRoutages().length == 0 || b.getListeCibleRoutages() == null) {
