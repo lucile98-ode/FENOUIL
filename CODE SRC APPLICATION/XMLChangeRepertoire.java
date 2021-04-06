@@ -8,15 +8,14 @@ import java.nio.file.*;
 
 public class XMLChangeRepertoire {
 
-    public static void XMLChangeRepertoire(BaseDeDonnees b) {
+    public static void XMLChangeRepertoire(BaseDeDonnees b, CibleRoutage cr) {
 
-        // String nomCible = b.getListeCibleRoutagesEnvoyee()[0].getTitre();
         try {
             String repertoireCourtant = System.getProperty("user.dir");
             // System.out.println("Le répertoire courant est : " + repertoireCourtant);
 
-            String src = repertoireCourtant + "\\cibleEnvoiEssai.xml";
-            String dest = repertoireCourtant + "\\FichiersXML\\cibleEnvoiEssai.xml";
+            String src = (repertoireCourtant + "\\" + cr.getTitre() + ".xml");
+            String dest = (repertoireCourtant + "\\FichiersXML\\" + cr.getTitre() + ".xml");
             Path tmp = Files.move(Paths.get(src), Paths.get(dest));
 
             if (tmp != null) {

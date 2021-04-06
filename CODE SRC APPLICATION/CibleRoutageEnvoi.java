@@ -41,7 +41,7 @@ public class CibleRoutageEnvoi extends JDialog {
         // Cible routage
         JPanel panCible = new JPanel();
         panCible.setBackground(Color.white);
-        panCible.setPreferredSize(new Dimension(800, 60));
+        panCible.setPreferredSize(new Dimension(870, 60));
         panCible.setBorder(BorderFactory.createTitledBorder("Selection d'une cible de routage"));
         cible = new JComboBox();
         if (b.getListeCibleRoutagesValide().length == 0 || b.getListeCibleRoutagesValide() == null) {
@@ -93,8 +93,9 @@ public class CibleRoutageEnvoi extends JDialog {
                     b.delCibleRoutageValide(b.getListeCibleRoutagesValide()[cibleIndex]);
 
                     // CREER LE FICHIER XML :
-                    XMLCreation.CreerXML(b);
-                    XMLChangeRepertoire.XMLChangeRepertoire(b);
+                    XMLCreation.CreerXML(b, b.getCibleRoutageEnvoye(b.getListeCibleRoutagesEnvoyee().length - 1));
+                    XMLChangeRepertoire.XMLChangeRepertoire(b,
+                            b.getCibleRoutageEnvoye(b.getListeCibleRoutagesEnvoyee().length - 1));
                 }
                 setVisible(false);
             }
