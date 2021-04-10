@@ -9,6 +9,9 @@ Les collaborateurs sur ce  projet  sont:
 - amrx12 = ROUX Amandine 20184369
 - Avicenne-b = GHAZOUANI Bilal 20163120
 
+
+
+Le logiciel est téléchargable sur le site internet de l2bha, fichier executable.
 Pour faire tourner la base de données il faudra télécharger MySQL.
 Le code étant écrit en JAVA.
 
