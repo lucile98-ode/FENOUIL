@@ -268,6 +268,58 @@ public class Fenetre extends JFrame {
             };
             this.getContentPane().add(new JScrollPane(tableau));
 
+        } else if (cible == "liste anomalie") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeAnomalie().length][4];
+
+            for (int i = 0; i < b.getListeAnomalie().length; i++) {
+                data[i][0] = b.getListeAnomalie()[i].getCommande().getNumeroCommande();
+                data[i][1] = b.getListeAnomalie()[i].getIndividu().getNom() + " "
+                        + b.getListeAnomalie()[i].getIndividu().getPrenom();
+                data[i][2] = b.getListeAnomalie()[i].getDate().toStringDate();
+                String s = "";
+                for (int j = 0; j < b.getListeAnomalie()[i].getTabAnomalie().length; j++) {
+                    s += b.getListeAnomalie()[i].getTabAnomalie()[j] + " "
+                            + b.getListeAnomalie()[i].getTabAnomalie()[j];
+                }
+                data[i][3] = s;
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero de commande", "Client", "Date de la commande", "Anomalie(s)" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
+        } else if (cible == "liste resolues") {
+            // Les donnees du tableau
+            Object data[][] = new Object[b.getListeAnomalieResolues().length][4];
+
+            for (int i = 0; i < b.getListeAnomalieResolues().length; i++) {
+                data[i][0] = b.getListeAnomalieResolues()[i].getCommande().getNumeroCommande();
+                data[i][1] = b.getListeAnomalieResolues()[i].getIndividu().getNom() + " "
+                        + b.getListeAnomalieResolues()[i].getIndividu().getPrenom();
+                data[i][2] = b.getListeAnomalieResolues()[i].getDate().toStringDate();
+                String s = "";
+                for (int j = 0; j < b.getListeAnomalieResolues()[i].getTabAnomalie().length; j++) {
+                    s += b.getListeAnomalieResolues()[i].getTabAnomalie()[j] + " "
+                            + b.getListeAnomalieResolues()[i].getTabAnomalie()[j];
+                }
+                data[i][3] = s;
+            }
+
+            // Les titres des colonnes
+            String title[] = { "Numero de commande", "Client", "Date de la commande", "Anomalie(s)" };
+            JTable tableau = new JTable(data, title) {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };
+            this.getContentPane().add(new JScrollPane(tableau));
+
         }
 
     }
@@ -348,6 +400,50 @@ public class Fenetre extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
 
+    }
+
+    public Fenetre(String vFenetre, String type, Anomalie an) {
+
+        this.setTitle(vFenetre);
+        this.setSize(300, 400);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        Color couleur = new ColorUIResource(255, 255, 255);
+
+        JPanel panel = new JPanel();
+        panel.setBackground(couleur);
+        if (type == "individu") {
+            JTextArea labelArea = new JTextArea(an.toStringAnomalie());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            // labelArea.setEnabled(false);
+            panel.add(labelArea);
+        } else if (type == "numero") {
+            JTextArea labelArea = new JTextArea(an.toStringAnomalie());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            // labelArea.setEnabled(false);
+            panel.add(labelArea);
+        } else if (type == "date") {
+            JTextArea labelArea = new JTextArea(an.toStringAnomalie());
+            panel.add(labelArea);
+            labelArea.setForeground(Color.BLACK);
+            // labelArea.setEnabled(false);
+            panel.add(labelArea);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(0, 0, 350, 400);
+
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(350, 400));
+        contentPane.add(scrollPane);
+        this.setContentPane(contentPane);
+        this.pack();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
     }
 
     public void disposeFenetre(Fenetre fen) {

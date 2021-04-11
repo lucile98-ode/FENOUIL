@@ -14,6 +14,9 @@ public class BaseDeDonnees {
     private Commande[] listeCommandesValidees = new Commande[0];
     private Commande[] listeCommandesInvalides = new Commande[0];
 
+    private Anomalie[] listeAnomalie = new Anomalie[0];
+    private Anomalie[] listeAnomalieResolues = new Anomalie[0];
+
     public BaseDeDonnees() {
 
     }
@@ -57,6 +60,14 @@ public class BaseDeDonnees {
 
     public Commande[] getListeCommandeInvalides() {
         return listeCommandesInvalides;
+    }
+
+    public Anomalie[] getListeAnomalie() {
+        return listeAnomalie;
+    }
+
+    public Anomalie[] getListeAnomalieResolues() {
+        return listeAnomalieResolues;
     }
 
     // POUR UN DEBUG
@@ -226,6 +237,39 @@ public class BaseDeDonnees {
         return 0;
     }
 
+    public int addAnomalie(String[] listeAnomalies, Individu individu, Commande commande, Date date) {
+        Anomalie a = new Anomalie(listeAnomalies, individu, commande, date);
+        Anomalie[] newList = new Anomalie[listeAnomalie.length + 1];
+        for (int i = 0; i < listeAnomalie.length; i++) {
+            newList[i] = listeAnomalie[i];
+        }
+        newList[newList.length - 1] = a;
+        listeAnomalie = newList;
+        return 0;
+    }
+
+    public int addAnomalie(Anomalie anomalie) {
+        Anomalie an = anomalie;
+        Anomalie[] newList = new Anomalie[listeAnomalie.length + 1];
+        for (int i = 0; i < listeAnomalie.length; i++) {
+            newList[i] = listeAnomalie[i];
+        }
+        newList[newList.length - 1] = an;
+        listeAnomalie = newList;
+        return 0;
+    }
+
+    public int addAnomalieResolues(Anomalie anomalie) {
+        Anomalie an = anomalie;
+        Anomalie[] newList = new Anomalie[listeAnomalieResolues.length + 1];
+        for (int i = 0; i < listeAnomalieResolues.length; i++) {
+            newList[i] = listeAnomalieResolues[i];
+        }
+        newList[newList.length - 1] = an;
+        listeAnomalieResolues = newList;
+        return 0;
+    }
+
     // TOSTRING PROVISOIRE DANS LA CONSOLE
     public String toStringCible() {
         String s = "nb de cible : " + listeCibleRoutage.length + "\n";
@@ -377,6 +421,35 @@ public class BaseDeDonnees {
                     j++;
                 }
                 listeCommandesInvalides = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delAnomalie(Anomalie a) {
+        if (listeAnomalie.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeAnomalie.length; i++) {
+                if (a.equals(listeAnomalie[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Anomalie[] newlist = new Anomalie[(listeAnomalie.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeAnomalie.length; i++) {
+                    if (a.equals(listeAnomalie[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeAnomalie[i];
+                    j++;
+                }
+                listeAnomalie = newlist;
                 return 0;
             } else {
                 return -1;

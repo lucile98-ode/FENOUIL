@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ConnexionAnomalie extends JDialog {
+
     private ToStringConnexionAnomalie infoToString = new ToStringConnexionAnomalie();
     private boolean sendData;
     private JLabel selectionLabel, mdpLabel;
@@ -47,7 +48,7 @@ public class ConnexionAnomalie extends JDialog {
         panSelection.setBorder(BorderFactory.createTitledBorder("Identifiant "));
         selection = new JComboBox();
         selection.addItem("");
-        selection.addItem("Gestionnaire administratif");
+        selection.addItem("Gestionnaire Administratif");
         selectionLabel = new JLabel("Vous etes : ");
         panSelection.add(selectionLabel);
         panSelection.add(selection);
@@ -73,7 +74,8 @@ public class ConnexionAnomalie extends JDialog {
 
         okBouton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                infoToString = new ToStringConnexionAnomalie((String) selection.getSelectedItem(), mdp.getText(), fen, b);
+                infoToString = new ToStringConnexionAnomalie((String) selection.getSelectedItem(), mdp.getText(), fen,
+                        b);
                 setVisible(false);
             }
         });

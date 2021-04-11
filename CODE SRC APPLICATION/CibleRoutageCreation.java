@@ -30,7 +30,7 @@ public class CibleRoutageCreation extends JDialog {
             BaseDeDonnees b, CibleRoutage cr) {
         super(parent, title, modal);
         if (etat == "initialisation") {
-            this.setSize(700, 320);
+            this.setSize(700, 360);
         } else {
             this.setSize(500, 160);
         }
@@ -75,14 +75,15 @@ public class CibleRoutageCreation extends JDialog {
             // Article
             JPanel panArticle = new JPanel();
             panArticle.setBackground(Color.white);
-            panArticle.setPreferredSize(new Dimension(575, 90));
+            panArticle.setPreferredSize(new Dimension(575, 120));
             panArticle.setBorder(BorderFactory.createTitledBorder("Selection des articles (5 max)"));
             art1 = new JComboBox();
             if (b.getListeArticles().length == 0 || b.getListeArticles() == null) {
                 art1.addItem("Aucun produit enregistre");
             }
             for (int i = 0; i < b.getListeArticles().length; i++) {
-                art1.addItem(b.getListeArticles()[i].getDesignation());
+                art1.addItem(b.getListeArticles()[i].getDesignation() + " (" + b.getListeArticles()[i].getNumero()
+                        + ") : " + b.getListeArticles()[i].getPrix() + " euros");
             }
 
             art2 = new JComboBox();
@@ -91,7 +92,8 @@ public class CibleRoutageCreation extends JDialog {
             }
             art2.addItem("");
             for (int i = 0; i < b.getListeArticles().length; i++) {
-                art2.addItem(b.getListeArticles()[i].getDesignation());
+                art2.addItem(b.getListeArticles()[i].getDesignation() + " (" + b.getListeArticles()[i].getNumero()
+                        + ") : " + b.getListeArticles()[i].getPrix() + " euros");
             }
 
             art3 = new JComboBox();
@@ -100,7 +102,8 @@ public class CibleRoutageCreation extends JDialog {
             }
             art3.addItem("");
             for (int i = 0; i < b.getListeArticles().length; i++) {
-                art3.addItem(b.getListeArticles()[i].getDesignation());
+                art3.addItem(b.getListeArticles()[i].getDesignation() + " (" + b.getListeArticles()[i].getNumero()
+                        + ") : " + b.getListeArticles()[i].getPrix() + " euros");
             }
 
             art4 = new JComboBox();
@@ -109,7 +112,8 @@ public class CibleRoutageCreation extends JDialog {
             }
             art4.addItem("");
             for (int i = 0; i < b.getListeArticles().length; i++) {
-                art4.addItem(b.getListeArticles()[i].getDesignation());
+                art4.addItem(b.getListeArticles()[i].getDesignation() + " (" + b.getListeArticles()[i].getNumero()
+                        + ") : " + b.getListeArticles()[i].getPrix() + " euros");
             }
 
             art5 = new JComboBox();
@@ -118,7 +122,8 @@ public class CibleRoutageCreation extends JDialog {
             }
             art5.addItem("");
             for (int i = 0; i < b.getListeArticles().length; i++) {
-                art5.addItem(b.getListeArticles()[i].getDesignation());
+                art5.addItem(b.getListeArticles()[i].getDesignation() + " (" + b.getListeArticles()[i].getNumero()
+                        + ") : " + b.getListeArticles()[i].getPrix() + " euros");
             }
 
             articleLabel = new JLabel("");
