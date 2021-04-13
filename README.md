@@ -14,7 +14,7 @@ Les collaborateurs sur ce  projet  sont:
 
 
 
-Le logiciel est téléchargable sur le site internet de l2bha, fichier executable.
+Le logiciel est téléchargable sur le site internet de L2BHA, fichier executable.
 Pour faire tourner la base de données il faudra télécharger MySQL.
 Le code étant écrit en JAVA.
 
