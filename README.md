@@ -14,11 +14,7 @@ Les collaborateurs sur ce  projet  sont:
 
 
 
-Le logiciel est téléchargable sur le site internet de L2BHA, fichier executable.
-Pour faire tourner la base de données il faudra télécharger MySQL.
-Le code étant écrit en JAVA.
-
-
-Machine virtuelle :
+- Le logiciel est téléchargable sur le site internet de L2BHA, fichier executable.
+- Le code étant écrit en JAVA.
 
 Site internet : https://l2bha.wordpress.com/
