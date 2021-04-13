@@ -1,4 +1,3 @@
-
 public class ToStringConnexionAnomalie {
 
     private String selection, mdp;
@@ -19,11 +18,11 @@ public class ToStringConnexionAnomalie {
     public String toString() {
         String str;
 
-        if ((this.selection.equals("Gestionnaire administratif"))
-                && (this.mdp.equals(motDePasse.getMdpGestionnaireAdmin()))) {
+        if ((this.selection.equals("Gestionnaire Administratif"))
+                && (this.mdp.equals(motDePasse.getMdpGestionnaireAdministratif()))) {
             str = "Connexion en temps que Gestionnaire administratif";
             this.fen.dispose();
-            InterfaceGraphique.test(b);
+            InterfaceGraphique.Anomalie(b);
         } else {
             str = "Erreur de connexion";
         }
@@ -31,4 +30,5 @@ public class ToStringConnexionAnomalie {
         return str;
 
     }
+
 }

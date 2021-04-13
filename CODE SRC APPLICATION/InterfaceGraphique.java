@@ -43,7 +43,10 @@ public class InterfaceGraphique {
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(e -> {
-            fen.dispose();
+            ConnexionAnomalie crc = new ConnexionAnomalie(null, "Connexion", true, fen, b);
+            ToStringConnexionAnomalie infoToString = crc.showConnexionAnomalie();
+            JOptionPane jop = new JOptionPane();
+            jop.showMessageDialog(null, infoToString.toString(), "Connexion", JOptionPane.INFORMATION_MESSAGE);
         });
 
         Bouton bouton4 = new Bouton("<html><center>Connexion - Menu Administration du referentiel", 750, 450, 200, 60);
@@ -824,6 +827,109 @@ public class InterfaceGraphique {
                 });
                 bouton5.addActionListener(ev -> {
                     fenListedesCommandesInvalides.dispose();
+                });
+            }
+        });
+
+    }
+
+    public static void Anomalie(BaseDeDonnees b) {
+
+        Fenetre fen = new Fenetre("Gestion des anomalies", 120, 150, 180);
+        Texte texte1 = new Texte("Gestion des anomalies", 225, 120, 1000, 100, 50, "Cambria");
+        fen.add(texte1);
+
+        Bouton bouton1 = new Bouton("Retour", 250, 600, 200, 30);
+        fen.panel.add(bouton1);
+        fen.setContentPane(fen.panel);
+        bouton1.addActionListener(e -> {
+            fen.dispose();
+            Accueil(b);
+        });
+
+        Bouton bouton2 = new Bouton("<html><center>Recherche d'anomalie par individu", 100, 300, 200, 75);
+        fen.panel.add(bouton2);
+        fen.setContentPane(fen.panel);
+        bouton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Anomalie an = new Anomalie();
+                System.out.println(b.getListeAnomalie().length);
+                RechercheAnomalie ac = new RechercheAnomalie(null, "Recherche d'anomalie", true, b, "individu", an);
+                ToStringRechercheAnomalie infoToString = ac.showRechercheAnomalie();
+            }
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Recherche d'anomalie par numero de commande", 100, 450, 200, 75);
+        fen.panel.add(bouton3);
+        fen.setContentPane(fen.panel);
+        bouton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Anomalie an = new Anomalie();
+                RechercheAnomalie ac = new RechercheAnomalie(null, "Recherche d'anomalie", true, b, "numero", an);
+                ToStringRechercheAnomalie infoToString = ac.showRechercheAnomalie();
+            }
+        });
+
+        Bouton bouton4 = new Bouton("<html><center>Recherche d'anomalie par date", 400, 300, 200, 75);
+        fen.panel.add(bouton4);
+        fen.setContentPane(fen.panel);
+        bouton4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Anomalie an = new Anomalie();
+                RechercheAnomalie ac = new RechercheAnomalie(null, "Recherche d'anomalie", true, b, "date", an);
+                ToStringRechercheAnomalie infoToString = ac.showRechercheAnomalie();
+            }
+        });
+
+        Bouton bouton6 = new Bouton("<html><center>Liste des anomalies ", 700, 450, 200, 75);
+        Bouton bouton7 = new Bouton("<html><center>Liste des anomalies en cours de traitement", 700, 300, 200, 75);
+
+        fen.panel.add(bouton6);
+        fen.setContentPane(fen.panel);
+        bouton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesAnomalies = new Fenetre("Liste des anomalie", "liste anomalie", b);
+
+                fenListedesAnomalies.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton7.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+
+            }
+        });
+
+        fen.panel.add(bouton7);
+        fen.setContentPane(fen.panel);
+        bouton7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                Fenetre fenListedesAnomalies = new Fenetre("Liste des anomalie", "liste resolues", b);
+                fenListedesAnomalies.setVisible(true);
+                bouton1.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton2.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton3.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton4.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
+                });
+                bouton6.addActionListener(ev -> {
+                    fenListedesAnomalies.dispose();
                 });
             }
         });

@@ -101,40 +101,40 @@ public class SaisirCommande extends JDialog {
 
             nom = new JTextField();
             nom.setPreferredSize(new Dimension(135, 25));
-            infoLabel = new JLabel("* Nom :");
+            infoLabel = new JLabel("Nom :");
             panInformation.add(infoLabel);
             panInformation.add(nom);
 
             prenom = new JTextField();
             prenom.setPreferredSize(new Dimension(135, 25));
-            infoLabel = new JLabel("* Prenom :");
+            infoLabel = new JLabel("Prenom :");
             panInformation.add(infoLabel);
             panInformation.add(prenom);
 
             numeroTel = new JTextField();
             numeroTel.setPreferredSize(new Dimension(120, 25));
-            infoLabel = new JLabel("* Telephone :");
+            infoLabel = new JLabel("Telephone :");
             panInformation.add(infoLabel);
             panInformation.add(numeroTel);
 
             dateJour = new JSpinner();
             dateJour.setValue(01);
             dateJour.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("* Jour : ");
+            infoLabel = new JLabel("Jour : ");
             panInformation.add(infoLabel);
             panInformation.add(dateJour);
 
             dateMois = new JSpinner();
             dateMois.setValue(01);
             dateMois.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("* Mois : ");
+            infoLabel = new JLabel("Mois : ");
             panInformation.add(infoLabel);
             panInformation.add(dateMois);
 
             dateAnnee = new JSpinner();
             dateAnnee.setValue(1990);
             dateAnnee.setPreferredSize(new Dimension(50, 30));
-            infoLabel = new JLabel("* Annee : ");
+            infoLabel = new JLabel("Annee : ");
             panInformation.add(infoLabel);
             panInformation.add(dateAnnee);
 
@@ -153,26 +153,26 @@ public class SaisirCommande extends JDialog {
             adresseNumero = new JSpinner();
             adresseNumero.setValue(1);
             adresseNumero.setPreferredSize(new Dimension(50, 30));
-            coordonneesLabel = new JLabel("* Numero : ");
+            coordonneesLabel = new JLabel("Numero : ");
             panCoordonnees.add(coordonneesLabel);
             panCoordonnees.add(adresseNumero);
 
             adresseRue = new JTextField();
             adresseRue.setPreferredSize(new Dimension(115, 25));
-            coordonneesLabel = new JLabel("* Adresse :");
+            coordonneesLabel = new JLabel("Adresse :");
             panCoordonnees.add(coordonneesLabel);
             panCoordonnees.add(adresseRue);
 
             departement = new JSpinner();
             departement.setValue(91000);
             departement.setPreferredSize(new Dimension(65, 30));
-            coordonneesLabel = new JLabel("* Code postal : ");
+            coordonneesLabel = new JLabel("Code postal : ");
             panCoordonnees.add(coordonneesLabel);
             panCoordonnees.add(departement);
 
             ville = new JTextField();
             ville.setPreferredSize(new Dimension(100, 25));
-            coordonneesLabel = new JLabel("* Ville :");
+            coordonneesLabel = new JLabel("Ville :");
             panCoordonnees.add(coordonneesLabel);
             panCoordonnees.add(ville);
 
@@ -181,7 +181,7 @@ public class SaisirCommande extends JDialog {
             panSpecifications.setBackground(Color.white);
             panSpecifications.setPreferredSize(new Dimension(625, 60));
             panSpecifications.setBorder(BorderFactory.createTitledBorder("Specificites"));
-            specificitesLabel = new JLabel("* Categorie Socio-Professionnelle :");
+            specificitesLabel = new JLabel("Categorie Socio-Professionnelle :");
             categorieSocioProfessionnelle = new JComboBox();
             if (b.getListeCategorieSocioProfessionnelles().length == 0
                     || b.getListeCategorieSocioProfessionnelles() == null) {
@@ -229,7 +229,7 @@ public class SaisirCommande extends JDialog {
             quantite = new JSpinner();
             quantite.setValue(1);
             quantite.setPreferredSize(new Dimension(65, 30));
-            quantiteLabel = new JLabel("* Quantite : ");
+            quantiteLabel = new JLabel("Quantite : ");
             panQuantite.add(quantiteLabel);
             panQuantite.add(quantite);
 
@@ -268,7 +268,7 @@ public class SaisirCommande extends JDialog {
 
                 numCarte1 = new JTextField();
                 numCarte1.setPreferredSize(new Dimension(35, 25));
-                infoLabel = new JLabel("* Numero CB (16 chiffres)");
+                infoLabel = new JLabel("Numero CB (16 chiffres)");
                 panNum.add(infoLabel);
                 panNum.add(numCarte1);
 
@@ -286,7 +286,7 @@ public class SaisirCommande extends JDialog {
 
                 crypto = new JTextField();
                 crypto.setPreferredSize(new Dimension(30, 25));
-                infoLabel = new JLabel("* Crytogramme visuel (3 chiffres)");
+                infoLabel = new JLabel("Crytogramme visuel (3 chiffres)");
                 panNum.add(infoLabel);
                 panNum.add(crypto);
 
@@ -304,20 +304,20 @@ public class SaisirCommande extends JDialog {
 
                 numCheque = new JTextField();
                 numCheque.setPreferredSize(new Dimension(115, 25));
-                infoLabel = new JLabel("* n° cheque");
+                infoLabel = new JLabel("n° cheque");
                 panInformation.add(infoLabel);
                 panInformation.add(numCheque);
 
                 nomBanque = new JTextField();
                 nomBanque.setPreferredSize(new Dimension(115, 25));
-                infoLabel = new JLabel("* Banque");
+                infoLabel = new JLabel("Banque");
                 panInformation.add(infoLabel);
                 panInformation.add(nomBanque);
 
                 montant = new JSpinner();
                 montant.setValue(0);
                 montant.setPreferredSize(new Dimension(70, 30));
-                infoLabel = new JLabel("* Montant du cheque : ");
+                infoLabel = new JLabel("Montant du cheque : ");
                 panInformation.add(infoLabel);
                 panInformation.add(montant);
 
@@ -329,7 +329,7 @@ public class SaisirCommande extends JDialog {
                 panAnomalie.setBackground(Color.white);
                 panAnomalie.setPreferredSize(new Dimension(200, 60));
                 panAnomalie.setBorder(BorderFactory.createTitledBorder("Anomalie"));
-                anomalieLabel = new JLabel("* Cheque signe ?");
+                anomalieLabel = new JLabel("Cheque signe ?");
                 anomalie = new JComboBox();
                 anomalie.addItem("oui");
                 anomalie.addItem("non");
@@ -531,18 +531,30 @@ public class SaisirCommande extends JDialog {
                         // Numero = date + heure
                         String numeroDeLaCommande = java.time.LocalDate.now() + "/" + java.time.LocalTime.now();
                         cmd.setNumeroCommande(numeroDeLaCommande);
+                        Anomalie an = new Anomalie();
 
                         Calendar c = Calendar.getInstance();
                         int year = c.get(Calendar.YEAR);
                         int month = c.get(Calendar.MONTH);
+                        int d = c.get(Calendar.DAY_OF_MONTH);
 
                         if (annee < year) {
                             cmd.setAnomalie(true);
                             cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+
+                            an.addAnomalie("Erreur sur le moyen de paiement");
+                            an.setIndividu(cmd.getIndividu());
+                            an.setDate(new Date(d, month, year));
+
                         } else if (annee == year) {
                             if (mois < month) {
                                 cmd.setAnomalie(true);
                                 cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+
+                                an.addAnomalie("Erreur sur le moyen de paiement");
+                                an.setIndividu(cmd.getIndividu());
+                                an.setDate(new Date(d, month, year));
+
                             } else if (mois == month) {
                                 // si le carte expire ce mois ci
                             }
@@ -553,6 +565,8 @@ public class SaisirCommande extends JDialog {
 
                         if (cmd.getAnomalie() == true) {
                             b.addCommandeInvalide(cmd);
+                            an.setCommande(cmd);
+                            b.addAnomalie(an);
                         } else {
                             cmd.getIndividu().setCaracteristique("client");
                             b.addCommandeValide(cmd);
@@ -578,10 +592,20 @@ public class SaisirCommande extends JDialog {
                         // Numero = date + heure
                         String numeroDeLaCommande = java.time.LocalDate.now() + "/" + java.time.LocalTime.now();
                         cmd.setNumeroCommande(numeroDeLaCommande);
+                        Anomalie an = new Anomalie();
 
                         if (montantPaye != cmd.getMontant()) {
                             cmd.setAnomalie(true);
                             cmd.addTypesAnomalie("Erreur sur le montant");
+
+                            an.addAnomalie("Erreur sur le montant");
+                            an.setIndividu(cmd.getIndividu());
+                            Calendar c = Calendar.getInstance();
+                            int year = c.get(Calendar.YEAR);
+                            int day = c.get(Calendar.DAY_OF_MONTH);
+                            int month = c.get(Calendar.MONTH);
+                            an.setDate(new Date(day, month, year));
+
                         } else {
                             cmd.addTypesAnomalie("");
                         }
@@ -589,6 +613,15 @@ public class SaisirCommande extends JDialog {
                         if (((String) anomalie.getSelectedItem()) == "non") {
                             cmd.setAnomalie(true);
                             cmd.addTypesAnomalie("Erreur sur le moyen de paiement");
+
+                            an.addAnomalie("Erreur sur le moyen de paiement");
+                            an.setIndividu(cmd.getIndividu());
+                            Calendar c = Calendar.getInstance();
+                            int year = c.get(Calendar.YEAR);
+                            int day = c.get(Calendar.DAY_OF_MONTH);
+                            int month = c.get(Calendar.MONTH);
+                            an.setDate(new Date(day, month, year));
+
                         } else {
                             cmd.addTypesAnomalie("");
                         }
@@ -598,6 +631,8 @@ public class SaisirCommande extends JDialog {
 
                         if (cmd.getAnomalie() == true) {
                             b.addCommandeInvalide(cmd);
+                            an.setCommande(cmd);
+                            b.addAnomalie(an);
                         } else if (cmd.getAnomalie() == false) {
                             cmd.getIndividu().setCaracteristique("client");
                             b.addCommandeValide(cmd);
