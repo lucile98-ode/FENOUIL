@@ -11,8 +11,12 @@ public class BaseDeDonnees {
     private DepartementResidence[] listeDepartementResidence = new DepartementResidence[0];
 
     private Commande[] listeCommandes = new Commande[0];
+    private Commande[] listeCommandesAEnregistre = new Commande[0];
     private Commande[] listeCommandesValidees = new Commande[0];
     private Commande[] listeCommandesInvalides = new Commande[0];
+
+    private Anomalie[] listeAnomalie = new Anomalie[0];
+    private Anomalie[] listeAnomalieResolues = new Anomalie[0];
 
     public BaseDeDonnees() {
 
@@ -51,12 +55,24 @@ public class BaseDeDonnees {
         return listeCommandes;
     }
 
+    public Commande[] getListeCommandeAEnregistrer() {
+        return listeCommandesAEnregistre;
+    }
+
     public Commande[] getListeCommandeValidees() {
         return listeCommandesValidees;
     }
 
     public Commande[] getListeCommandeInvalides() {
         return listeCommandesInvalides;
+    }
+
+    public Anomalie[] getListeAnomalie() {
+        return listeAnomalie;
+    }
+
+    public Anomalie[] getListeAnomalieResolues() {
+        return listeAnomalieResolues;
     }
 
     // POUR UN DEBUG
@@ -204,6 +220,21 @@ public class BaseDeDonnees {
         return 0;
     }
 
+    public int addCommandeEnregistre(Individu individu, Article[] listeArticlesCommande, Reglement reglement,
+            float montant, String numeroCommande, boolean anomalie, String[] listeAnomalies) {
+
+        Commande commande = new Commande(individu, listeArticlesCommande, reglement, montant, numeroCommande, anomalie,
+                listeAnomalies);
+
+        Commande[] newList = new Commande[listeCommandesAEnregistre.length + 1];
+        for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+            newList[i] = listeCommandesAEnregistre[i];
+        }
+        newList[newList.length - 1] = commande;
+        listeCommandesAEnregistre = newList;
+        return 0;
+    }
+
     public int addCommandeValide(Commande c) {
 
         Commande[] newList = new Commande[listeCommandesValidees.length + 1];
@@ -223,6 +254,39 @@ public class BaseDeDonnees {
         }
         newList[newList.length - 1] = c;
         listeCommandesInvalides = newList;
+        return 0;
+    }
+
+    public int addAnomalie(String[] listeAnomalies, Individu individu, Commande commande, Date date) {
+        Anomalie a = new Anomalie(listeAnomalies, individu, commande, date);
+        Anomalie[] newList = new Anomalie[listeAnomalie.length + 1];
+        for (int i = 0; i < listeAnomalie.length; i++) {
+            newList[i] = listeAnomalie[i];
+        }
+        newList[newList.length - 1] = a;
+        listeAnomalie = newList;
+        return 0;
+    }
+
+    public int addAnomalie(Anomalie anomalie) {
+        Anomalie an = anomalie;
+        Anomalie[] newList = new Anomalie[listeAnomalie.length + 1];
+        for (int i = 0; i < listeAnomalie.length; i++) {
+            newList[i] = listeAnomalie[i];
+        }
+        newList[newList.length - 1] = an;
+        listeAnomalie = newList;
+        return 0;
+    }
+
+    public int addAnomalieResolues(Anomalie anomalie) {
+        Anomalie an = anomalie;
+        Anomalie[] newList = new Anomalie[listeAnomalieResolues.length + 1];
+        for (int i = 0; i < listeAnomalieResolues.length; i++) {
+            newList[i] = listeAnomalieResolues[i];
+        }
+        newList[newList.length - 1] = an;
+        listeAnomalieResolues = newList;
         return 0;
     }
 
@@ -357,6 +421,35 @@ public class BaseDeDonnees {
         }
     }
 
+    public int delCommandeEnregistre(Commande c) {
+        if (listeCommandesAEnregistre.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+                if (c.equals(listeCommandesAEnregistre[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Commande[] newlist = new Commande[(listeCommandesAEnregistre.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+                    if (c.equals(listeCommandesAEnregistre[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeCommandesAEnregistre[i];
+                    j++;
+                }
+                listeCommandesAEnregistre = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
     public int delCommandeInvalide(Commande c) {
         if (listeCommandesInvalides.length != 0) {
             boolean isFind = false;
@@ -377,6 +470,35 @@ public class BaseDeDonnees {
                     j++;
                 }
                 listeCommandesInvalides = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delAnomalie(Anomalie a) {
+        if (listeAnomalie.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeAnomalie.length; i++) {
+                if (a.equals(listeAnomalie[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Anomalie[] newlist = new Anomalie[(listeAnomalie.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeAnomalie.length; i++) {
+                    if (a.equals(listeAnomalie[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeAnomalie[i];
+                    j++;
+                }
+                listeAnomalie = newlist;
                 return 0;
             } else {
                 return -1;
