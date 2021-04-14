@@ -22,7 +22,7 @@ public class DetailsCibleRoutageValidee extends JDialog {
 
     public DetailsCibleRoutageValidee(JFrame parent, String title, boolean modal, BaseDeDonnees bd) {
         super(parent, title, modal);
-        this.setSize(900, 160);
+        this.setSize(500, 160);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -41,7 +41,7 @@ public class DetailsCibleRoutageValidee extends JDialog {
         // cible
         JPanel panCible = new JPanel();
         panCible.setBackground(Color.white);
-        panCible.setPreferredSize(new Dimension(800, 60));
+        panCible.setPreferredSize(new Dimension(400, 60));
         panCible.setBorder(BorderFactory.createTitledBorder("Selection d'une cible de routage"));
         cible = new JComboBox();
         if (b.getListeCibleRoutagesValide().length == 0 || b.getListeCibleRoutagesValide() == null) {
@@ -49,14 +49,7 @@ public class DetailsCibleRoutageValidee extends JDialog {
         } else {
             cible.addItem("");
             for (int i = 0; i < b.getListeCibleRoutagesValide().length; i++) {
-                cible.addItem("Type : " + b.getListeCibleRoutagesValide()[i].getType() + " - Titre : "
-                        + b.getListeCibleRoutagesValide()[i].getTitre() + " - articles : "
-                        + b.getListeCibleRoutagesValide()[i].getArticle1() + " "
-                        + b.getListeCibleRoutagesValide()[i].getArticle2() + " "
-                        + b.getListeCibleRoutagesValide()[i].getArticle3() + " "
-                        + b.getListeCibleRoutagesValide()[i].getArticle4() + " "
-                        + b.getListeCibleRoutagesValide()[i].getArticle5() + " - "
-                        + b.getListeCibleRoutagesValide()[i].getSelection());
+                cible.addItem("Titre : " + b.getListeCibleRoutagesValide()[i].getTitre());
             }
         }
 

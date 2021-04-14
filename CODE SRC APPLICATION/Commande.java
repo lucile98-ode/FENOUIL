@@ -133,6 +133,13 @@ public class Commande {
         s += "Montant : " + getMontant() + " euros\n";
         s += "Numero de CB : " + getReglement().getNumeroCarteBanquaire() + "\n";
         s += "Date d'expiration de CB : " + getReglement().getDateExpiration().toStringDateCB() + "\n";
+        s += "Anomalie ? : " + getAnomalie() + "\n";
+        for (int i = 0; i < getTypesAnomalie().length - 1; i++) {
+            s += getTypesAnomalie()[i] + " - ";
+        }
+        for (int i = getTypesAnomalie().length - 1; i == getTypesAnomalie().length - 1; i++) {
+            s += getTypesAnomalie()[i];
+        }
 
         return s;
     }

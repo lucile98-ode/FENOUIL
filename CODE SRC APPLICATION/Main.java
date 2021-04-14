@@ -7,36 +7,92 @@ public class Main {
 
                 // TESTS ADMINISTRATION DES DONNEES INDIVIDUS (BASE DE DONNEES REMPLIS POUR DES
                 // TESTS)
-                Individu individu1 = new Individu("Nom1", "Prenom1", new Date(1, 1, 1982), "cadre",
-                                new Adresse(1, "avenue de la Republique", 75000, "Paris"), "0123456789",
-                                "individu@exemple.fr", "client");
+                Individu individu1 = new Individu("DUPUY", "Martin", new Date(18, 6, 1950), "retraites",
+                                new Adresse(64, "avenue de la Republique", 75000, "Paris"), "0123456789",
+                                "martin.dupuy@laposte.net", "client");
 
-                Individu individu2 = new Individu("Nom2", "Prenom2", new Date(1, 1, 1900), "cadre",
-                                new Adresse(56, "rue de la St Cloud", 97600, "Evry"), "0738102736",
-                                "individu2@exemple.fr", "prospect");
+                Individu individu2 = new Individu("RIVIERE", "Evelyne", new Date(29, 12, 1965), "employes",
+                                new Adresse(1, "rue de la St Cloud", 91000, "Evry"), "0738102736",
+                                "evelyne.riviere@gmail.com", "prospect");
+
+                Individu individu3 = new Individu("MOREL", "Simon", new Date(30, 5, 1980), "cadres",
+                                new Adresse(27, "rue De La Chevrotiere", 92700, "Colombes"), "0654837285",
+                                "simon.morel@laposte.net", "client");
+
+                Individu individu4 = new Individu("PEREZ", "Sophie", new Date(17, 1, 1999), "etudiants",
+                                new Adresse(78, "avenue des Pommiers", 69000, "Lyon"), "0624249856",
+                                "sophie.perez@hotmail.fr", "prospect");
+
+                Individu individu5 = new Individu("FABRE", "Luka", new Date(10, 11, 1988), "cadre",
+                                new Adresse(10, "avenue de Versailles", 75000, "Paris"), "0628995372",
+                                "luka.fabre@gmail.com", "client");
+
+                Individu individu6 = new Individu("GUERIN", "Rose", new Date(5, 7, 1948), "retraites",
+                                new Adresse(22, "place Gabriel Perie", 86000, "Poitiers"), "0773590208",
+                                "rose.guerin@hotmail.fr", "prospect");
+
+                Individu individu7 = new Individu("MULLER", "Victor", new Date(25, 2, 1969), "autres",
+                                new Adresse(9, "boulevard du Midi", 59000, "Lille"), "0622983582",
+                                "victor.muller@free.fr", "client");
+
+                Individu individu8 = new Individu("GARCIA", "Alix", new Date(27, 4, 1985), "cadres",
+                                new Adresse(287, "rue des Chailliers", 33063, "Bordeaux"), "0624159378",
+                                "alix.garcia@gmail.com", "prospect");
+
+                Individu individu9 = new Individu("LEBRUN", "Paul", new Date(20, 8, 1970), "agriculteurs",
+                                new Adresse(19, "avenue de la Liberte", 75000, "Paris"), "0682938112",
+                                "paul.lebrun@outlook.com", "client");
+
+                Individu individu10 = new Individu("FERNANDES", "Celia", new Date(1, 3, 2000), "etudiants",
+                                new Adresse(175, "boulevard du Levant", 75000, "Paris"), "0791630982",
+                                "celia.fernandes@free.fr", "prospect");
 
                 b.addIndividu(individu1);
                 b.addIndividu(individu2);
+                b.addIndividu(individu3);
+                b.addIndividu(individu4);
+                b.addIndividu(individu5);
+                b.addIndividu(individu6);
+                b.addIndividu(individu7);
+                b.addIndividu(individu8);
+                b.addIndividu(individu9);
+                b.addIndividu(individu10);
 
                 Individu[] listeIndividus = { individu1, individu2 };
 
                 // TESTS CIBLES DE ROUTAGE (BASE DE DONNEES REMPLIS POUR DES TESTS)
-                b.addCibleRoutages("Departement de residence", "Cible Essai 1", "ciseau", "pinceau", "ciment", "brique",
-                                "carrelage", "essai 1", "economique", "catalogue papier", listeIndividus);
-                b.addCibleRoutagesValide(new CibleRoutage("Age", "Cible Essai 2", "parpaing", "brique", "", "", "",
-                                "essai 2", "", "SMS", listeIndividus));
-                b.addCibleRoutagesAEnvoyer(new CibleRoutage("Categorie socio-professionnelle", "Cible Essai 3",
-                                "brique", "ciment", "carrelage", "", "", "essai 3", "economique", "catalogue papier",
-                                listeIndividus));
+
+                // b.addCibleRoutages("Departement de residence", "PUB - Bricolage",
+                // "carrelage", "pinceau", "ciment",
+                // "brique", "", "Nouveaux articles", "economique", "catalogue papier",
+                // listeIndividus);
+
+                // b.addCibleRoutagesValide(new CibleRoutage("Age", "Cible Essai 2", "parpaing",
+                // "brique", "", "", "",
+                // "essai 2", "", "SMS", listeIndividus));
+                // b.addCibleRoutagesAEnvoyer(new CibleRoutage("Categorie
+                // socio-professionnelle", "Cible Essai 3",
+                // "brique", "ciment", "carrelage", "", "", "essai 3", "economique", "catalogue
+                // papier",
+                // listeIndividus));
 
                 // TESTS ADMINISTRATION DES DONNEES ARTICLES (BASE DE DONNEES REMPLIS POUR DES
                 // TESTS)
                 b.addArticle("01234", "pot de peinture", 30, 50);
-                b.addArticle("94248", "carrelage", 100, 50);
+                b.addArticle("94248", "fauteil", 100, 50);
                 b.addArticle("23439", "colle", 20, 50);
-                b.addArticle("84774", "ciment", 40, 50);
+                b.addArticle("84774", "canape", 130, 50);
+                b.addArticle("78323", "table", 80, 50);
+                b.addArticle("36719", "chaise", 30, 50);
+                b.addArticle("29503", "lavabo", 80, 50);
+                b.addArticle("10928", "lampe", 20, 50);
+                b.addArticle("72973", "tapis", 20, 50);
+                b.addArticle("88023", "bureau", 30, 50);
+                b.addArticle("82631", "porte", 40, 50);
+                b.addArticle("85064", "armoire", 40, 50);
+                b.addArticle("92722", "etagere", 40, 50);
 
-                Article art1 = new Article("08264", "parpaing", 60, 10);
+                Article art1 = new Article("08264", "lit", 60, 10);
                 Article art2 = new Article("02935", "marteau", 15, 10);
                 Article art3 = new Article("92750", "pinceau", 5, 10);
                 Article art4 = new Article("54782", "seau", 10, 10);
@@ -46,30 +102,55 @@ public class Main {
                 b.addArticle(art3);
                 b.addArticle(art4);
 
+                Article[] listeArticle1 = { art3 };
+                Article[] listeArticle2 = { art2, art4 };
                 Article[] listeArticle = { art1, art2, art3, art4 };
 
                 // TESTS ADMINISTRATION DES DONNEES CATEGORIE SOCIO PROFESSIONNELLE (BASE DE
                 // DONNEES REMPLIS POUR DES TESTS)
                 b.addCategorieSocioProfessionnelle("artisans");
-                b.addCategorieSocioProfessionnelle("agriculteur");
-                b.addCategorieSocioProfessionnelle("cadre");
+                b.addCategorieSocioProfessionnelle("agriculteurs");
+                b.addCategorieSocioProfessionnelle("cadres");
                 b.addCategorieSocioProfessionnelle("ouvriers");
-                b.addCategorieSocioProfessionnelle("retraite");
-                b.addCategorieSocioProfessionnelle("employe");
+                b.addCategorieSocioProfessionnelle("retraites");
+                b.addCategorieSocioProfessionnelle("employes");
+                b.addCategorieSocioProfessionnelle("etudiants");
                 b.addCategorieSocioProfessionnelle("autres");
 
                 // TESTS COMMANDE (BASE DE DONNEES REMPLIS POUR DES TESTS)
                 Commande cmd = new Commande();
                 cmd.setIndividu(individu1);
                 cmd.setListeArticle(listeArticle);
-                cmd.setReglement(new Reglement("CB", "0192746", new Date(12, 2031)));
+                cmd.setReglement(new Reglement("CB", "**** **** **** **** ***", new Date(12, 2031)));
                 cmd.setMontant(900);
-                cmd.setNumeroCommande(java.time.LocalDate.now() + "/" + java.time.LocalTime.now());
+                cmd.setNumeroCommande("2021-04-12/12:16:27.624159510");
+                // System.out.println(java.time.LocalDate.now() + "/" +
+                // java.time.LocalTime.now());
                 cmd.setAnomalie(false);
                 cmd.addTypesAnomalie("");
 
-                b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), cmd.getMontant(),
+                b.addCommandeEnregistre(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), 50,
                                 cmd.getNumeroCommande(), cmd.getAnomalie(), cmd.getTypesAnomalie());
+                b.addCommande(cmd.getIndividu(), cmd.getListeArticle(), cmd.getReglement(), 50, cmd.getNumeroCommande(),
+                                cmd.getAnomalie(), cmd.getTypesAnomalie());
+
+                b.addCommandeEnregistre(individu5, listeArticle2,
+                                new Reglement("CB", "**** **** **** **** ***", new Date(12, 2025)), 200,
+                                "2021-04-13/09:12:23.787023504", false, cmd.getTypesAnomalie());
+                b.addCommande(individu5, listeArticle2,
+                                new Reglement("CB", "**** **** **** **** ***", new Date(12, 2025)), 200,
+                                "2021-04-13/09:12:23.787023504", false, cmd.getTypesAnomalie());
+
+                cmd.addTypesAnomalie("Erreur sur le moyen de paiment");
+
+                b.addCommandeEnregistre(individu10, listeArticle1,
+                                new Reglement("CB", "**** **** **** **** ***", new Date(12, 2020)), cmd.getMontant(),
+                                java.time.LocalDate.now() + "/" + java.time.LocalTime.now(), true,
+                                cmd.getTypesAnomalie());
+                b.addCommande(individu10, listeArticle1,
+                                new Reglement("CB", "**** **** **** **** ***", new Date(12, 2020)), cmd.getMontant(),
+                                java.time.LocalDate.now() + "/" + java.time.LocalTime.now(), true,
+                                cmd.getTypesAnomalie());
 
                 // BASE DE DONNEES DES DEPARTEMENTS
                 // (https://www.regions-et-departements.fr/departements-francais)

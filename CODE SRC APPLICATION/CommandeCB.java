@@ -11,18 +11,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class CibleRoutageValidation extends JDialog {
+public class CommandeCB extends JDialog {
 
-    private ToStringValidationCibleRoutage infoToString = new ToStringValidationCibleRoutage();
+    private ToStringCommandeCB infoToString = new ToStringCommandeCB();
     private boolean sendData;
     private JLabel cibleLabel;
     private JComboBox cible;
 
     BaseDeDonnees b;
 
-    public CibleRoutageValidation(JFrame parent, String title, boolean modal, BaseDeDonnees bd) {
+    public CommandeCB(JFrame parent, String title, boolean modal, BaseDeDonnees bd) {
         super(parent, title, modal);
-        this.setSize(900, 160);
+        this.setSize(500, 160);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -30,7 +30,7 @@ public class CibleRoutageValidation extends JDialog {
         this.initComponent();
     }
 
-    public ToStringValidationCibleRoutage showCibleRoutageValidation() {
+    public ToStringCommandeCB showCommandeCB() {
         this.sendData = false;
         this.setVisible(true);
         return this.infoToString;
@@ -38,19 +38,22 @@ public class CibleRoutageValidation extends JDialog {
 
     private void initComponent() {
 
-        // Cible routage
+        // cible
         JPanel panCible = new JPanel();
         panCible.setBackground(Color.white);
-        panCible.setPreferredSize(new Dimension(870, 60));
-        panCible.setBorder(BorderFactory.createTitledBorder("Selection d'une cible de routage"));
+        panCible.setPreferredSize(new Dimension(400, 60));
+        panCible.setBorder(BorderFactory.createTitledBorder("Selection de la commande"));
         cible = new JComboBox();
-        if (b.getListeCibleRoutages().length == 0 || b.getListeCibleRoutages() == null) {
-            cible.addItem("Pas de cible à valider");
+        if (b.getListeCommandeAEnregistrer().length == 0 || b.getListeCommandeAEnregistrer() == null) {
+            cible.addItem("Pas de commande CB");
         } else {
             cible.addItem("");
-            for (int i = 0; i < b.getListeCibleRoutages().length; i++) {
-                cible.addItem("Titre : " + b.getListeCibleRoutages()[i].getTitre());
-
+            for (int i = 0; i < b.getListeCommandeAEnregistrer().length; i++) {
+                if (b.getListeCommandeAEnregistrer()[i].getReglement().getType() == "CB") {
+                    cible.addItem("n° " + b.getListeCommandeAEnregistrer()[i].getNumeroCommande());
+                } else {
+                    cible.addItem("Pas de commande CB");
+                }
             }
         }
 
@@ -63,18 +66,21 @@ public class CibleRoutageValidation extends JDialog {
         content.add(panCible);
 
         JPanel control = new JPanel();
-        JButton okBouton = new JButton("OK");
 
-        okBouton.addActionListener(new ActionListener() {
+        JButton voirCible = new JButton("Enregistrer");
+        voirCible.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                infoToString = new ToStringValidationCibleRoutage((String) cible.getSelectedItem());
                 int cibleIndex = (int) cible.getSelectedIndex() - 1;
-                if (cibleIndex != -1) {
-
-                    b.addCibleRoutagesValide(b.getListeCibleRoutages()[cibleIndex]);
-                    b.delCibleRoutage(b.getListeCibleRoutages()[cibleIndex]);
+                Commande cmd = b.getListeCommandeAEnregistrer()[cibleIndex];
+                if (cmd.getAnomalie()) {
+                    b.addCommandeInvalide(cmd);
+                } else {
+                    b.addCommandeValide(cmd);
                 }
+                b.delCommandeEnregistre(cmd);
                 setVisible(false);
+                Fenetre recapCible = new Fenetre("Recapitulatif de la commande", cmd.getReglement().getType(), cmd);
+                recapCible.setVisible(true);
             }
         });
 
@@ -85,7 +91,7 @@ public class CibleRoutageValidation extends JDialog {
             }
         });
 
-        control.add(okBouton);
+        control.add(voirCible);
         control.add(cancelBouton);
 
         this.getContentPane().add(content, BorderLayout.CENTER);

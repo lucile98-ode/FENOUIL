@@ -11,6 +11,7 @@ public class BaseDeDonnees {
     private DepartementResidence[] listeDepartementResidence = new DepartementResidence[0];
 
     private Commande[] listeCommandes = new Commande[0];
+    private Commande[] listeCommandesAEnregistre = new Commande[0];
     private Commande[] listeCommandesValidees = new Commande[0];
     private Commande[] listeCommandesInvalides = new Commande[0];
 
@@ -52,6 +53,10 @@ public class BaseDeDonnees {
 
     public Commande[] getListeCommande() {
         return listeCommandes;
+    }
+
+    public Commande[] getListeCommandeAEnregistrer() {
+        return listeCommandesAEnregistre;
     }
 
     public Commande[] getListeCommandeValidees() {
@@ -212,6 +217,21 @@ public class BaseDeDonnees {
         }
         newList[newList.length - 1] = commande;
         listeCommandes = newList;
+        return 0;
+    }
+
+    public int addCommandeEnregistre(Individu individu, Article[] listeArticlesCommande, Reglement reglement,
+            float montant, String numeroCommande, boolean anomalie, String[] listeAnomalies) {
+
+        Commande commande = new Commande(individu, listeArticlesCommande, reglement, montant, numeroCommande, anomalie,
+                listeAnomalies);
+
+        Commande[] newList = new Commande[listeCommandesAEnregistre.length + 1];
+        for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+            newList[i] = listeCommandesAEnregistre[i];
+        }
+        newList[newList.length - 1] = commande;
+        listeCommandesAEnregistre = newList;
         return 0;
     }
 
@@ -392,6 +412,35 @@ public class BaseDeDonnees {
                     j++;
                 }
                 listeCommandes = newlist;
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public int delCommandeEnregistre(Commande c) {
+        if (listeCommandesAEnregistre.length != 0) {
+            boolean isFind = false;
+            for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+                if (c.equals(listeCommandesAEnregistre[i])) {
+                    isFind = true;
+                    break;
+                }
+            }
+            if (isFind) {
+                Commande[] newlist = new Commande[(listeCommandesAEnregistre.length - 1)];
+                int j = 0;
+                for (int i = 0; i < listeCommandesAEnregistre.length; i++) {
+                    if (c.equals(listeCommandesAEnregistre[i])) {
+                        continue;
+                    }
+                    newlist[j] = listeCommandesAEnregistre[i];
+                    j++;
+                }
+                listeCommandesAEnregistre = newlist;
                 return 0;
             } else {
                 return -1;
