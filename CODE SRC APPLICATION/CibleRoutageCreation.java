@@ -534,9 +534,13 @@ public class CibleRoutageCreation extends JDialog {
                     cp += select.charAt(1);
                     cp += select.charAt(2);
 
+                    // System.out.println(cp);
+
                     for (int i = 0; i < b.getListeIndividus().length; i++) {
                         if ((b.getListeIndividus()[i].getAdresseCodePostal().charAt(0) == select.charAt(0))) {
+                            System.out.println(cp);
                             if ((b.getListeIndividus()[i].getAdresseCodePostal().charAt(1) == select.charAt(1))) {
+                                System.out.println(cp);
 
                                 if ((b.getListeIndividus()[i].getAdresseCodePostal().charAt(0)
                                         + (b.getListeIndividus()[i].getAdresseCodePostal().charAt(1)) == cp.charAt(0)
@@ -544,7 +548,8 @@ public class CibleRoutageCreation extends JDialog {
                                     if (b.getListeIndividus()[i].getAdresseCodePostal().charAt(2) == select.charAt(2)) {
                                         cr.addIndividu(b.getListeIndividus()[i]);
                                     }
-                                } else if (select.charAt(1) + "" != "7" + "") {
+                                }
+                                if (select.charAt(1) + "" != '7' + "") {
                                     cr.addIndividu(b.getListeIndividus()[i]);
                                 }
                             }

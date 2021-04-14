@@ -68,19 +68,6 @@ public class InterfaceGraphique {
             fen.dispose();
         });
 
-        Bouton bouton6 = new Bouton("<html><center>Interface Client - Faire une commande en ligne", 750, 300, 200, 60);
-        fen.panel.add(bouton6);
-        fen.setContentPane(fen.panel);
-        bouton6.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                Commande cmd = new Commande();
-                cmd.setMontant(0);
-                Reglement reg = new Reglement();
-                SaisirCommande sc = new SaisirCommande(null, "Saisir Commande", true, "individu", "CB", cmd, reg, b);
-                ToStringSaisirCommande infoToString = sc.showSaisirCommande();
-
-            }
-        });
     }
 
     public static void CreationCibleDeRoutage(BaseDeDonnees b) {
@@ -725,7 +712,7 @@ public class InterfaceGraphique {
             Accueil(b);
         });
 
-        Bouton bouton2 = new Bouton("<html><center>Saisie des commandes (recues par courrier)", 250, 350, 200, 75);
+        Bouton bouton2 = new Bouton("<html><center>Saisie des commandes (recues par courrier)", 100, 350, 200, 75);
         fen.panel.add(bouton2);
         fen.setContentPane(fen.panel);
         bouton2.addActionListener(new ActionListener() {
@@ -739,7 +726,19 @@ public class InterfaceGraphique {
 
         });
 
-        Bouton bouton3 = new Bouton("<html><center>Consulter le details des commandes", 550, 350, 200, 75);
+        Bouton bouton7 = new Bouton("<html><center>Enregistrement des commandes (recues par internet)", 400, 350, 200,
+                75);
+        fen.panel.add(bouton7);
+        fen.setContentPane(fen.panel);
+        bouton7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                CommandeCB sc = new CommandeCB(null, "Enregistrer une Commande", true, b);
+                ToStringCommandeCB infoToString = sc.showCommandeCB();
+
+            }
+        });
+
+        Bouton bouton3 = new Bouton("<html><center>Consulter le details des commandes", 700, 350, 200, 75);
         fen.panel.add(bouton3);
         fen.setContentPane(fen.panel);
         bouton3.addActionListener(new ActionListener() {

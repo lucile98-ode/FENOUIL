@@ -49,26 +49,8 @@ public class CibleRoutageEnvoi extends JDialog {
         } else {
             cible.addItem("");
             for (int i = 0; i < b.getListeCibleRoutagesValide().length; i++) {
-                if (b.getListeCibleRoutagesValide()[i].getStyle() == "") {
-                    cible.addItem("titre : " + b.getListeCibleRoutagesValide()[i].getTitre() + " - type : "
-                            + b.getListeCibleRoutagesValide()[i].getType() + " - article(s) : "
-                            + b.getListeCibleRoutagesValide()[i].getArticle1() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle2() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle3() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle4() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle5() + " - description : "
-                            + b.getListeCibleRoutagesValide()[i].getDescription());
-                } else {
-                    cible.addItem("titre : " + b.getListeCibleRoutagesValide()[i].getTitre() + " - type : "
-                            + b.getListeCibleRoutagesValide()[i].getType() + " - style : "
-                            + b.getListeCibleRoutagesValide()[i].getStyle() + " - article(s) : "
-                            + b.getListeCibleRoutagesValide()[i].getArticle1() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle2() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle3() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle4() + " "
-                            + b.getListeCibleRoutagesValide()[i].getArticle5() + " - description : "
-                            + b.getListeCibleRoutagesValide()[i].getDescription());
-                }
+                cible.addItem("Titre : " + b.getListeCibleRoutagesValide()[i].getTitre());
+
             }
         }
 
